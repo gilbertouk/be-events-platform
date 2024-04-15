@@ -38,10 +38,11 @@ model Event {
   price        String
   description  String
   information  String?
+  location     String
   userId       String
   capacity     Int
   category     Category  @relation(fields: [categoryId], references: [id])
-  categoryId   String    @unique
+  categoryId   String
   logoUrl      String
   importedDate DateTime?
   importedId   String?
