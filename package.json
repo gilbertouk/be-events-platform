@@ -10,8 +10,10 @@
     "start": "tsx src/listen.ts",
     "start:dev": "tsx watch src/listen.ts",
     "build": "tsup src",
-    "test": "vitest",
-    "seed-db": "npx prisma db seed"
+    "seed-db": "npx prisma db seed",
+    "test": "jest --watch --passWithNoTests",
+    "test:staged": "jest --passWithNoTests",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
