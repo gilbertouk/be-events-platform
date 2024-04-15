@@ -12,3 +12,61 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id @default(uuid())
+  firstName String
+  surname   String
+  email     String   @unique
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Event     Event[]
+  Order     Order[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Event {
+  id           String    @id @default(uuid())
+  name         String
+  dateStart    DateTime
+  dateEnd      DateTime
+  price        String
+  description  String
+  information  String?
+  userId       String
+  capacity     Int
+  category     Category  @relation(fields: [categoryId], references: [id])
+  categoryId   String    @unique
+  logoUrl      String
+  importedDate DateTime?
+  importedId   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  organizer    User      @relation(fields: [userId], references: [id])
+  Order        Order[]
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  icon      String
+  events    Event[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  event     Event    @relation(fields: [eventId], references: [id])
+  eventId   String
+  tickets   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
