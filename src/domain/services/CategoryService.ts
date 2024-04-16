@@ -13,4 +13,13 @@ export class CategoryService {
       throw new Error();
     }
   }
+
+  async fetchAll(): Promise<ICategory[]> {
+    try {
+      const categories = await database.category.findMany();
+      return categories;
+    } catch (error) {
+      throw new Error();
+    }
+  }
 }
