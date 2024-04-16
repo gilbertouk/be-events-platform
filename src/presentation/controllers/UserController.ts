@@ -2,8 +2,8 @@ import type { HttpRequest, HttpResponse } from "../protocols";
 import { MissingParamError, InvalidParamError } from "../errors";
 import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateUserUseCase } from "../../usecases/createUser/CreateUserUseCase";
+import { DeleteUserUseCase } from "../../usecases/deleteUser/DeleteUserUseCase";
 import { z } from "zod";
-import { DeleteUserUseCase } from "src/usecases/deleteUser/DeleteUserUseCase";
 
 const userSchema = z.object({
   firstName: z.string(),
