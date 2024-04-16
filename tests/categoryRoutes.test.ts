@@ -7,8 +7,8 @@ beforeAll(() => {
   execSync("npm run seed-db");
 });
 
-describe("Category Controller crateCategory", () => {
-  test("Should return 400 if no name is provided", async () => {
+describe("Category Controller", () => {
+  test("POST crateCategory - Should return 400 if no name is provided", async () => {
     const { body } = await request
       .post("/api/v1/category")
       .send({
@@ -19,7 +19,7 @@ describe("Category Controller crateCategory", () => {
     expect(body.body).toEqual({ message: "Missing param: name" });
   });
 
-  test("Should return 400 if no icon is provided", async () => {
+  test("POST crateCategory - Should return 400 if no icon is provided", async () => {
     const { body } = await request
       .post("/api/v1/category")
       .send({
@@ -30,7 +30,7 @@ describe("Category Controller crateCategory", () => {
     expect(body.body).toEqual({ message: "Missing param: icon" });
   });
 
-  test("Should return 201 with correct values that were provided", async () => {
+  test("POST crateCategory - Should return 201 with correct values that were provided", async () => {
     const { body } = await request
       .post("/api/v1/category")
       .send({
@@ -44,7 +44,7 @@ describe("Category Controller crateCategory", () => {
     expect(category.icon).toBe("any-icon");
   });
 
-  test("Should return correct category model", async () => {
+  test("POST crateCategory - Should return correct category model", async () => {
     const { body } = await request.post("/api/v1/category").send({
       name: "any-name",
       icon: "any-icon",
