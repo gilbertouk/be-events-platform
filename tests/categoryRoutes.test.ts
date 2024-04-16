@@ -4,15 +4,13 @@ import { execSync } from "child_process";
 import { type ICategory } from "src/domain/models/Category";
 
 const request = supertest(app);
-beforeEach(() => {
-  execSync("npm run seed-db");
-});
-
-afterAll(() => {
+beforeAll(() => {
   execSync("npm run seed-db");
 });
 
 describe("Category Controller", () => {
+  let categoryToDelete: ICategory;
+
   test("POST crateCategory - Should return 400 if no name is provided", async () => {
     const { body } = await request
       .post("/api/v1/category")
@@ -44,22 +42,43 @@ describe("Category Controller", () => {
       })
       .expect(201);
     const category = body.body;
+    categoryToDelete = category;
     expect(body.statusCode).toBe(201);
     expect(category.name).toBe("any-name");
     expect(category.icon).toBe("any-icon");
-  });
-
-  test("POST crateCategory - Should return correct category model", async () => {
-    const { body } = await request.post("/api/v1/category").send({
-      name: "any-name",
-      icon: "any-icon",
-    });
-    const category = body.body;
     expect(category).toHaveProperty("id");
     expect(category).toHaveProperty("name");
     expect(category).toHaveProperty("icon");
     expect(category).toHaveProperty("createdAt");
     expect(category).toHaveProperty("updatedAt");
+  });
+
+  test("DELETE deleteCategory - Should return 200", async () => {
+    const { body } = await request
+      .delete(`/api/v1/category/${categoryToDelete.id}`)
+      .expect(200);
+
+    const category = body.body;
+    expect(body.statusCode).toBe(200);
+    expect(category).toEqual(categoryToDelete);
+  });
+
+  test("DELETE deleteCategory - Should return 404 if no id param is provided", async () => {
+    const { body } = await request.delete("/api/v1/category/").expect(404);
+
+    const category = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(category).toEqual("Path not found");
+  });
+
+  test("DELETE deleteCategory - Should return 404 if invalid id param is provided", async () => {
+    const { body } = await request
+      .delete("/api/v1/category/invalid-id")
+      .expect(404);
+
+    const category = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(category).toEqual({ error: "Resource not found" });
   });
 
   test("GET getCategories - Should return 200", async () => {
