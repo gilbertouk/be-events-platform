@@ -3,7 +3,11 @@ import app from "../src/server";
 import { execSync } from "child_process";
 
 const request = supertest(app);
-beforeAll(() => {
+beforeEach(() => {
+  execSync("npm run seed-db");
+});
+
+afterAll(() => {
   execSync("npm run seed-db");
 });
 
@@ -55,5 +59,9 @@ describe("Category Controller", () => {
     expect(category).toHaveProperty("icon");
     expect(category).toHaveProperty("createdAt");
     expect(category).toHaveProperty("updatedAt");
+  });
+
+  test("GET getCategories - Should return 200 with all categories", async () => {
+    await request.get("/api/v1/categories").expect(200);
   });
 });
