@@ -25,17 +25,17 @@ categoryRouter
     } catch (error) {
       next(error);
     }
+  })
+  .get("/user/:email", async (req, res, next) => {
+    try {
+      const { statusCode, body } = await UserController.selectByEmailUser(req);
+      return res.status(statusCode).send({
+        statusCode,
+        body,
+      });
+    } catch (error) {
+      next(error);
+    }
   });
-// .get("/categories", async (_req, res, next) => {
-//   try {
-//     const { statusCode, body } = await CategoryController.getCategories();
-//     return res.status(statusCode).send({
-//       statusCode,
-//       body,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 export default categoryRouter;

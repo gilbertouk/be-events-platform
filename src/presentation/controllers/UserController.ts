@@ -3,6 +3,7 @@ import { MissingParamError, InvalidParamError } from "../errors";
 import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateUserUseCase } from "../../usecases/createUser/CreateUserUseCase";
 import { DeleteUserUseCase } from "../../usecases/deleteUser/DeleteUserUseCase";
+import { SelectByEmailUserUseCase } from "../../usecases/selectUserById/SelectByEmailUserUseCase";
 import { z } from "zod";
 
 const userSchema = z.object({
@@ -21,6 +22,7 @@ interface passedMessageError {
 
 const createUserUseCase = new CreateUserUseCase();
 const deleteUserUseCase = new DeleteUserUseCase();
+const selectByEmailUserUseCase = new SelectByEmailUserUseCase();
 
 export class UserController {
   static async crateUser(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -75,6 +77,34 @@ export class UserController {
       const { id } = httpRequest.params;
 
       const result = await deleteUserUseCase.delete({ id });
+
+      if (!result) {
+        return notFound();
+      }
+
+      return {
+        statusCode: 200,
+        body: result.user,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async selectByEmailUser(
+    httpRequest: HttpRequest,
+  ): Promise<HttpResponse> {
+    try {
+      const requiredParams: string[] = ["email"];
+      for (const field of requiredParams) {
+        if (!httpRequest.params[field]) {
+          return badRequest(new MissingParamError(field));
+        }
+      }
+
+      const { email } = httpRequest.params;
+
+      const result = await selectByEmailUserUseCase.selectByEmail({ email });
 
       if (!result) {
         return notFound();

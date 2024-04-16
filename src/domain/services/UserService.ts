@@ -1,5 +1,6 @@
 import { type CreateUserInput } from "../../usecases/createUser/CreateUserInput";
 import { type DeleteUserInput } from "../../usecases/deleteUser/DeleteUserInput";
+import { type SelectByEmailUserInput } from "../../usecases/selectUserById/SelectByEmailUserInput";
 import { type IUser } from "../models/User";
 import { database } from "../../infrastructure/database/";
 
@@ -33,6 +34,18 @@ export class UserService {
 
       const userModel = await database.user.delete({
         where: { id: user.id },
+      });
+
+      return userModel;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async selectByEmailUser(user: SelectByEmailUserInput): Promise<IUser | null> {
+    try {
+      const userModel = await database.user.findUnique({
+        where: { email: user.email },
       });
 
       return userModel;
