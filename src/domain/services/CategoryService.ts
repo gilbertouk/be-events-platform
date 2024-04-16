@@ -1,6 +1,7 @@
 import { type CreateCategoryInput } from "../../usecases/createCategory/CreateCategoryInput";
 import { type ICategory } from "../models/Category";
 import { database } from "../../infrastructure/database/";
+import { type DeleteCategoryInput } from "src/usecases/deleteCategory/DeleteCategoryInput";
 
 export class CategoryService {
   async create(category: CreateCategoryInput): Promise<ICategory> {
@@ -18,6 +19,26 @@ export class CategoryService {
     try {
       const categories = await database.category.findMany();
       return categories;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async delete(category: DeleteCategoryInput): Promise<ICategory | null> {
+    try {
+      const categoryToDelete = await database.category.findUnique({
+        where: { id: category.id },
+      });
+
+      if (!categoryToDelete) {
+        return null;
+      }
+
+      const categoryModel = await database.category.delete({
+        where: { id: category.id },
+      });
+
+      return categoryModel;
     } catch (error) {
       throw new Error();
     }

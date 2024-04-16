@@ -16,7 +16,10 @@ const routes = (app: express.Router): void => {
   // app.use("/api", adminRouter);
 
   app.use((_req: Request, res: Response) => {
-    return res.status(404).send({ message: "Path not found" });
+    return res.status(404).send({
+      statusCode: 404,
+      body: "Path not found",
+    });
   });
 };
 
