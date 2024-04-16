@@ -1,8 +1,9 @@
 import type { HttpRequest, HttpResponse } from "../protocols";
 import { MissingParamError, InvalidParamError } from "../errors";
-import { badRequest, serverError } from "../helpers/http-helpers";
+import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateUserUseCase } from "../../usecases/createUser/CreateUserUseCase";
 import { z } from "zod";
+import { DeleteUserUseCase } from "src/usecases/deleteUser/DeleteUserUseCase";
 
 const userSchema = z.object({
   firstName: z.string(),
@@ -19,6 +20,7 @@ interface passedMessageError {
 }
 
 const createUserUseCase = new CreateUserUseCase();
+const deleteUserUseCase = new DeleteUserUseCase();
 
 export class UserController {
   static async crateUser(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -55,6 +57,32 @@ export class UserController {
       return {
         statusCode: 201,
         body: user,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async deleteUser(httpRequest: HttpRequest): Promise<HttpResponse> {
+    try {
+      const requiredParams: string[] = ["id"];
+      for (const field of requiredParams) {
+        if (!httpRequest.params[field]) {
+          return badRequest(new MissingParamError(field));
+        }
+      }
+
+      const { id } = httpRequest.params;
+
+      const result = await deleteUserUseCase.delete({ id });
+
+      if (!result) {
+        return notFound();
+      }
+
+      return {
+        statusCode: 200,
+        body: result.user,
       };
     } catch (error) {
       return serverError();
