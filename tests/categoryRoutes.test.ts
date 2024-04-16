@@ -1,6 +1,7 @@
 import supertest from "supertest";
 import app from "../src/server";
 import { execSync } from "child_process";
+import { type ICategory } from "src/domain/models/Category";
 
 const request = supertest(app);
 beforeEach(() => {
@@ -61,7 +62,20 @@ describe("Category Controller", () => {
     expect(category).toHaveProperty("updatedAt");
   });
 
-  test("GET getCategories - Should return 200 with all categories", async () => {
+  test("GET getCategories - Should return 200", async () => {
     await request.get("/api/v1/categories").expect(200);
+  });
+
+  test("GET getCategories - Should return all categories on database", async () => {
+    const { body } = await request.get("/api/v1/categories");
+    const categories = body.body;
+    expect(categories.length).toBe(12);
+    categories.forEach((category: ICategory) => {
+      expect(category).toHaveProperty("id");
+      expect(category).toHaveProperty("name");
+      expect(category).toHaveProperty("icon");
+      expect(category).toHaveProperty("createdAt");
+      expect(category).toHaveProperty("updatedAt");
+    });
   });
 });
