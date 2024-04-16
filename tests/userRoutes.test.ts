@@ -117,4 +117,38 @@ describe("User Controller", () => {
     expect(body.statusCode).toBe(404);
     expect(user).toEqual({ error: "Resource not found" });
   });
+
+  test("GET selectByEmailUser - Should return 200", async () => {
+    const { body } = await request
+      .get("/api/v1/user/gilberto@gmail.com")
+      .expect(200);
+
+    const user = body.body;
+    expect(body.statusCode).toBe(200);
+    expect(user.firstName).toEqual("Gilberto");
+    expect(user.surname).toEqual("Silva");
+    expect(user.email).toEqual("gilberto@gmail.com");
+    expect(user.role).toEqual("ADMIN");
+    expect(user).toHaveProperty("id");
+    expect(user).toHaveProperty("createdAt");
+    expect(user).toHaveProperty("updatedAt");
+  });
+
+  test("GET selectByEmailUser - Should return 404 if no email param is provided", async () => {
+    const { body } = await request.get("/api/v1/user/").expect(404);
+
+    const user = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(user).toEqual("Path not found");
+  });
+
+  test("GET selectByEmailUser - Should return 404 if invalid email param is provided", async () => {
+    const { body } = await request
+      .get("/api/v1/user/invalid-email")
+      .expect(404);
+
+    const user = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(user).toEqual({ error: "Resource not found" });
+  });
 });
