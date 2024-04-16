@@ -1,19 +1,14 @@
 import type express from "express";
 import { type Request, type Response } from "express";
 import categoryRouter from "./categoryRoutes";
+import userRouter from "./userRoutes";
 
 const routes = (app: express.Router): void => {
   app.get("/api/v1", function (_req: Request, res: Response) {
     return res.status(200).send({ message: "Api Okay!" });
   });
   app.use("/api/v1", categoryRouter);
-  // app.use("/api", courseMealRouter);
-  // app.use("/api", cuisinesRouter);
-
-  // // protected routers
-  // app.use("/api", usersRouter);
-  // app.use("/api", orderRouter);
-  // app.use("/api", adminRouter);
+  app.use("/api/v1", userRouter);
 
   app.use((_req: Request, res: Response) => {
     return res.status(404).send({
