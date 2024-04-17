@@ -397,9 +397,11 @@ describe("Event Controller", () => {
       .get("/api/v1/events?page=1&limit=9")
       .expect(200);
 
-    const events = body.body;
+    const { events, _count } = body.body;
     expect(body.statusCode).toBe(200);
     if (events.length > 0) {
+      expect(body.body).toHaveProperty("_count");
+      expect(typeof _count).toBe("number");
       events.forEach((event: IEvent) => {
         expect(event).toHaveProperty("name");
         expect(event).toHaveProperty("dateStart");
