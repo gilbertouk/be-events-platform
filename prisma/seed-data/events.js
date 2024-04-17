@@ -99,8 +99,8 @@ module.exports.events = [
   {
     id: "f914c7dd-1bf9-4a3b-80bc-cba9cd8b53af",
     name: "Brighton Marathon",
-    dateStart: "2024-04-14T12:00:00Z",
-    dateEnd: "2024-04-14T22:00:00Z",
+    dateStart: "2024-04-17T18:00:00Z",
+    dateEnd: "2024-04-17T22:00:00Z",
     location: "Brighton",
     categoryId: "a3df2556-07b7-4e41-b7b8-cb055c2e5f57",
     price: "10.99",
