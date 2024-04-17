@@ -1,9 +1,13 @@
 import type { HttpRequest, HttpResponse } from "../protocols";
-import { MissingParamError, InvalidParamError } from "../errors";
+import {
+  MissingParamError,
+  InvalidParamError,
+  MissingQueryError,
+} from "../errors";
 import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateEventUseCase } from "../../usecases/createEvent/CreateEventUseCase";
 import { DeleteEventUseCase } from "../../usecases/deleteEvent/DeleteEventUseCase";
-// import { SelectByEmailUserUseCase } from "../../usecases/selectUserById/SelectByEmailUserUseCase";
+import { FetchEventsUseCase } from "../../usecases/fetchEvents/FetchEventsUseCase";
 import { z } from "zod";
 
 const userSchema = z.object({
@@ -28,6 +32,7 @@ interface passedMessageError {
 
 const createEventUseCase = new CreateEventUseCase();
 const deleteEventUseCase = new DeleteEventUseCase();
+const fetchEventsUseCase = new FetchEventsUseCase();
 
 export class EventController {
   static async crateEvent(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -113,6 +118,27 @@ export class EventController {
       return {
         statusCode: 200,
         body: result.event,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async fetchEvents(httpRequest: HttpRequest): Promise<HttpResponse> {
+    try {
+      const requiredQuery: string[] = ["page", "limit"];
+      for (const query of requiredQuery) {
+        if (!httpRequest.query[query]) {
+          return badRequest(new MissingQueryError(query));
+        }
+      }
+
+      const { page, limit } = httpRequest.query;
+
+      const { events } = await fetchEventsUseCase.fetchAll({ page, limit });
+      return {
+        statusCode: 200,
+        body: events,
       };
     } catch (error) {
       return serverError();

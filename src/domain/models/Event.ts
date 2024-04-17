@@ -13,6 +13,7 @@ export interface IEvent {
   location: string;
   importedDate: Date | null;
   importedId: string | null;
+  viewCount: number;
   createdAt: Date;
   updatedAt: Date;
 }

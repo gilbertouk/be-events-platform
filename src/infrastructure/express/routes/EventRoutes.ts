@@ -25,17 +25,17 @@ eventRouter
     } catch (error) {
       next(error);
     }
+  })
+  .get("/events", async (req, res, next) => {
+    try {
+      const { statusCode, body } = await EventController.fetchEvents(req);
+      return res.status(statusCode).send({
+        statusCode,
+        body,
+      });
+    } catch (error) {
+      next(error);
+    }
   });
-// .get("/user/:email", async (req, res, next) => {
-//   try {
-//     const { statusCode, body } = await UserController.selectByEmailUser(req);
-//     return res.status(statusCode).send({
-//       statusCode,
-//       body,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 export default eventRouter;

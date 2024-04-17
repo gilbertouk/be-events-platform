@@ -1,5 +1,6 @@
 import { type CreateEventInput } from "../../usecases/createEvent/CreateEventInput";
-import { type DeleteEventInput } from "src/usecases/deleteEvent/DeleteEventInput";
+import { type DeleteEventInput } from "../../usecases/deleteEvent/DeleteEventInput";
+import { type FetchEventsInput } from "../../usecases/fetchEvents/FetchEventsInput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
 
@@ -58,6 +59,26 @@ export class EventService {
       });
 
       return eventModel;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async fetchAll(input: FetchEventsInput): Promise<IEvent[]> {
+    try {
+      const events = await database.event.findMany({
+        where: {
+          dateStart: {
+            gte: new Date(),
+          },
+        },
+        orderBy: {
+          dateStart: "asc",
+        },
+        take: input.limit,
+        skip: (input.page - 1) * input.limit,
+      });
+      return events;
     } catch (error) {
       throw new Error();
     }
