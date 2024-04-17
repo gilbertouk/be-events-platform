@@ -9,6 +9,7 @@ import { CreateEventUseCase } from "../../usecases/createEvent/CreateEventUseCas
 import { DeleteEventUseCase } from "../../usecases/deleteEvent/DeleteEventUseCase";
 import { FetchEventsUseCase } from "../../usecases/fetchEvents/FetchEventsUseCase";
 import { SelectByIdEventUseCase } from "../../usecases/selectEventById/SelectByIdEventUseCase";
+import { FetchTrendingUseCase } from "../../usecases/fetchTrending/FetchTrendingUseCase";
 import { z } from "zod";
 
 const userSchema = z.object({
@@ -35,6 +36,7 @@ const createEventUseCase = new CreateEventUseCase();
 const deleteEventUseCase = new DeleteEventUseCase();
 const fetchEventsUseCase = new FetchEventsUseCase();
 const selectByIdEventUseCase = new SelectByIdEventUseCase();
+const fetchTrendingUseCase = new FetchTrendingUseCase();
 
 export class EventController {
   static async crateEvent(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -138,6 +140,18 @@ export class EventController {
       const { page, limit } = httpRequest.query;
 
       const { events } = await fetchEventsUseCase.fetchAll({ page, limit });
+      return {
+        statusCode: 200,
+        body: events,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async fetchTrending(): Promise<HttpResponse> {
+    try {
+      const { events } = await fetchTrendingUseCase.fetchTrending();
       return {
         statusCode: 200,
         body: events,

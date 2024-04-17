@@ -105,4 +105,22 @@ export class EventService {
       throw new Error();
     }
   }
+
+  async fetchTrending(): Promise<IEvent[]> {
+    try {
+      const events = await database.event.findMany({
+        where: {
+          dateStart: {
+            gte: new Date(),
+          },
+        },
+        orderBy: [{ viewCount: "desc" }, { dateStart: "asc" }],
+        take: 6,
+      });
+
+      return events;
+    } catch (error) {
+      throw new Error();
+    }
+  }
 }
