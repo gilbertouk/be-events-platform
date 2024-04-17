@@ -14,6 +14,7 @@ module.exports.events = [
     capacity: 10000,
     logoUrl: "https://example.com/london_fashion_week_logo.jpg",
     createdAt: "2024-02-15T08:00:00Z",
+    viewCount: 15,
   },
   {
     id: "0ec0855e-f868-4e67-ae6d-d70ff16dbb0a",
@@ -30,6 +31,7 @@ module.exports.events = [
     capacity: 5000,
     logoUrl: "https://example.com/edinburgh_fringe_festival_logo.jpg",
     createdAt: "2024-03-10T10:00:00Z",
+    viewCount: 1,
   },
   {
     id: "d7d005e0-0670-4fa8-81fd-3a2a1a930379",
@@ -46,6 +48,7 @@ module.exports.events = [
     capacity: 8000,
     logoUrl: "https://example.com/manchester_international_festival_logo.jpg",
     createdAt: "2024-03-20T12:00:00Z",
+    viewCount: 36,
   },
   {
     id: "3d4c107a-f0e6-4edf-96c4-214bc7c8a634",
@@ -62,6 +65,7 @@ module.exports.events = [
     capacity: 15000,
     logoUrl: "https://example.com/birmingham_pride_logo.jpg",
     createdAt: "2024-01-20T09:00:00Z",
+    viewCount: 152,
   },
   {
     id: "9db84ac2-2de1-499d-baeb-5e31b6f0a0e2",
@@ -79,6 +83,7 @@ module.exports.events = [
     logoUrl:
       "https://example.com/glasgow_international_comedy_festival_logo.jpg",
     createdAt: "2024-02-05T11:00:00Z",
+    viewCount: 523,
   },
   {
     id: "5905b70a-6e97-4d9e-8633-1d11ef31f3fc",
@@ -95,6 +100,7 @@ module.exports.events = [
     capacity: 10000,
     logoUrl: "https://example.com/liverpool_sound_city_logo.jpg",
     createdAt: "2024-02-15T13:00:00Z",
+    viewCount: 26,
   },
   {
     id: "f914c7dd-1bf9-4a3b-80bc-cba9cd8b53af",
@@ -111,6 +117,7 @@ module.exports.events = [
     capacity: 20000,
     logoUrl: "https://example.com/brighton_marathon_logo.jpg",
     createdAt: "2024-01-10T15:00:00Z",
+    viewCount: 153,
   },
   {
     id: "ea2a636f-d6f1-47c8-bb25-cd16c1d6f2c8",
@@ -128,6 +135,7 @@ module.exports.events = [
     capacity: 8000,
     logoUrl: "https://example.com/belfast_international_arts_festival_logo.jpg",
     createdAt: "2024-02-29T10:00:00Z",
+    viewCount: 23,
   },
   {
     id: "44f04016-bf2e-4a76-96f5-620bd5e1f932",
@@ -144,6 +152,7 @@ module.exports.events = [
     capacity: 70000,
     logoUrl: "https://example.com/leeds_festival_logo.jpg",
     createdAt: "2024-01-15T08:00:00Z",
+    viewCount: 17,
   },
   {
     id: "b5e27e90-47ec-4cc7-b69e-b221462e2a3e",
@@ -161,6 +170,7 @@ module.exports.events = [
     logoUrl:
       "https://example.com/cardiff_international_food_and_drink_festival_logo.jpg",
     createdAt: "2024-02-10T14:00:00Z",
+    viewCount: 52,
   },
   {
     id: "fd9b6a22-52e4-47af-b7d8-989b7db8cc49",
@@ -177,6 +187,7 @@ module.exports.events = [
     capacity: 12000,
     logoUrl: "https://example.com/oxford_literary_festival_logo.jpg",
     createdAt: "2023-09-18T12:00:00Z",
+    viewCount: 16,
   },
   {
     id: "d631891b-8eb5-4820-80b4-37d5dce3a251",
@@ -193,6 +204,7 @@ module.exports.events = [
     capacity: 35000,
     logoUrl: "https://example.com/cambridge_science_festival_logo.jpg",
     createdAt: "2023-10-05T09:00:00Z",
+    viewCount: 63,
   },
   {
     id: "68e91d5e-8e1a-4902-8645-394f9e56d899",
@@ -210,6 +222,7 @@ module.exports.events = [
     logoUrl:
       "https://example.com/newcastle_international_film_festival_logo.jpg",
     createdAt: "2023-11-20T14:30:00Z",
+    viewCount: 53,
   },
   {
     id: "1a6c9383-cf2c-40dc-9f44-b47aa80bdc87",
@@ -226,6 +239,7 @@ module.exports.events = [
     capacity: 25000,
     logoUrl: "https://example.com/york_chocolate_festival_logo.jpg",
     createdAt: "2023-12-15T10:30:00Z",
+    viewCount: 25,
   },
   {
     id: "888c8fe5-3b6b-41d3-8cfd-963c024611fb",
@@ -242,6 +256,7 @@ module.exports.events = [
     capacity: 50000,
     logoUrl: "https://example.com/bristol_balloon_fiesta_logo.jpg",
     createdAt: "2023-11-28T14:00:00Z",
+    viewCount: 42,
   },
   {
     id: "f47391e1-f36d-4e32-88c0-0b1e49cb4390",
@@ -258,6 +273,7 @@ module.exports.events = [
     capacity: 30000,
     logoUrl: "https://example.com/sheffield_doc_fest_logo.jpg",
     createdAt: "2023-12-05T11:45:00Z",
+    viewCount: 56,
   },
   {
     id: "8a826df8-6f80-4f27-b2b7-06ad886c8d1a",
@@ -274,6 +290,7 @@ module.exports.events = [
     capacity: 40000,
     logoUrl: "https://example.com/cardiff_food_festival_logo.jpg",
     createdAt: "2023-10-20T13:15:00Z",
+    viewCount: 5,
   },
   {
     id: "d6b7fc69-4847-4d2b-af21-b443795a2b67",
@@ -290,6 +307,7 @@ module.exports.events = [
     capacity: 30000,
     logoUrl: "https://example.com/york_chocolate_festival_logo.jpg",
     createdAt: "2023-12-15T10:30:00Z",
+    viewCount: 32,
   },
   {
     id: "2a5687de-7730-4725-83f8-faf3a5ccce19",
@@ -306,6 +324,7 @@ module.exports.events = [
     capacity: 40000,
     logoUrl: "https://example.com/london_coffee_festival_logo.jpg",
     createdAt: "2023-11-20T09:45:00Z",
+    viewCount: 41,
   },
   {
     id: "29d9d7cf-2714-4b6c-87b5-5de9c42898d6",
@@ -322,6 +341,7 @@ module.exports.events = [
     capacity: 25000,
     logoUrl: "https://example.com/bristol_food_connections_logo.jpg",
     createdAt: "2023-10-30T14:20:00Z",
+    viewCount: 22,
   },
   {
     id: "a4baf76e-92d1-48cb-afeb-96a0575a4e62",
@@ -338,6 +358,7 @@ module.exports.events = [
     capacity: 60000,
     logoUrl: "https://example.com/edinburgh_fringe_festival_logo.jpg",
     createdAt: "2023-09-25T12:10:00Z",
+    viewCount: 36,
   },
   {
     id: "5b6206f5-067b-42e4-b42c-bd8229b1d5ff",
@@ -354,6 +375,7 @@ module.exports.events = [
     capacity: 45000,
     logoUrl: "https://example.com/manchester_international_festival_logo.jpg",
     createdAt: "2023-08-15T09:00:00Z",
+    viewCount: 69,
   },
   {
     id: "408896e0-8507-4b65-9a79-1d0d9d871992",
@@ -371,5 +393,6 @@ module.exports.events = [
     capacity: 35000,
     logoUrl: "https://example.com/belfast_international_arts_festival_logo.jpg",
     createdAt: "2023-07-10T11:30:00Z",
+    viewCount: 41,
   },
 ];
