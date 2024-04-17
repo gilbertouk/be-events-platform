@@ -1,6 +1,6 @@
 import { type CreateUserInput } from "../../usecases/createUser/CreateUserInput";
 import { type DeleteUserInput } from "../../usecases/deleteUser/DeleteUserInput";
-import { type SelectByEmailUserInput } from "../../usecases/selectUserById/SelectByEmailUserInput";
+import { type SelectByEmailUserInput } from "../../usecases/selectUserByEmail/SelectByEmailUserInput";
 import { type IUser } from "../models/User";
 import { database } from "../../infrastructure/database/";
 

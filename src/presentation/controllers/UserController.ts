@@ -3,7 +3,7 @@ import { MissingParamError, InvalidParamError } from "../errors";
 import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateUserUseCase } from "../../usecases/createUser/CreateUserUseCase";
 import { DeleteUserUseCase } from "../../usecases/deleteUser/DeleteUserUseCase";
-import { SelectByEmailUserUseCase } from "../../usecases/selectUserById/SelectByEmailUserUseCase";
+import { SelectByEmailUserUseCase } from "../../usecases/selectUserByEmail/SelectByEmailUserUseCase";
 import { z } from "zod";
 
 const userSchema = z.object({
