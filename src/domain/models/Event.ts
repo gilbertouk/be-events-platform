@@ -1,17 +1,18 @@
 export interface IEvent {
   id: string;
   name: string;
-  dataStart: Date;
+  dateStart: Date;
   dateEnd: Date;
   price: string;
   description: string;
-  information?: string;
+  information: string | null;
   userId: string;
   capacity: number;
   categoryId: string;
   logoUrl: string;
-  importedDate?: Date;
-  importedId?: string;
+  location: string;
+  importedDate: Date | null;
+  importedId: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
