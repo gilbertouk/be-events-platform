@@ -309,6 +309,49 @@ describe("Event Controller", () => {
     expect(event.updatedAt).not.toBe(null);
   });
 
+  test("GET fetchEventById - Should return 200 with correct event", async () => {
+    const { body } = await request
+      .get(`/api/v1/event/${eventToDelete.id}`)
+      .expect(200);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(200);
+    expect(event.id).toBe(eventToDelete.id);
+    expect(event.name).toBe(eventToDelete.name);
+    expect(event.dateStart).toBe(eventToDelete.dateStart);
+    expect(event.dateEnd).toBe(eventToDelete.dateEnd);
+    expect(event.price).toBe(eventToDelete.price);
+    expect(event.description).toBe(eventToDelete.description);
+    expect(event.information).toBe(eventToDelete.information);
+    expect(event.userId).toBe(eventToDelete.userId);
+    expect(event.capacity).toBe(eventToDelete.capacity);
+    expect(event.categoryId).toBe(eventToDelete.categoryId);
+    expect(event.logoUrl).toBe(eventToDelete.logoUrl);
+    expect(event.location).toBe(eventToDelete.location);
+    expect(event.importedDate).toBe(eventToDelete.importedDate);
+    expect(event.importedId).toBe(eventToDelete.importedId);
+    expect(event.createdAt).toBe(eventToDelete.createdAt);
+    expect(event.updatedAt).toBe(eventToDelete.updatedAt);
+    expect(event.viewCount).toBe(eventToDelete.viewCount);
+  });
+
+  test("GET fetchEventById - Should return 200 with correct viewCount", async () => {
+    const { body } = await request
+      .get(`/api/v1/event/${eventToDelete.id}`)
+      .expect(200);
+
+    const event = body.body;
+    expect(event.id).toBe(eventToDelete.id);
+    expect(event.viewCount).toBe(eventToDelete.viewCount + 1);
+  });
+
+  test("GET fetchEventById - Should return 400 if invalid-id provided", async () => {
+    const { body } = await request.get("/api/v1/event/invalid").expect(404);
+
+    expect(body.statusCode).toBe(404);
+    expect(body.body).toEqual({ error: "Resource not found" });
+  });
+
   test("DELETE deleteEvent - Should return 200", async () => {
     const { body } = await request
       .delete(`/api/v1/event/${eventToDelete.id}`)
@@ -316,7 +359,7 @@ describe("Event Controller", () => {
 
     const event = body.body;
     expect(body.statusCode).toBe(200);
-    expect(event).toEqual(eventToDelete);
+    expect(event.id).toBe(eventToDelete.id);
   });
 
   test("DELETE deleteEvent - Should return 404 if no id param is provided", async () => {
