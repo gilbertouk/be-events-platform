@@ -139,10 +139,13 @@ export class EventController {
 
       const { page, limit } = httpRequest.query;
 
-      const { events } = await fetchEventsUseCase.fetchAll({ page, limit });
+      const { events, _count } = await fetchEventsUseCase.fetchAll({
+        page,
+        limit,
+      });
       return {
         statusCode: 200,
-        body: events,
+        body: { events, _count },
       };
     } catch (error) {
       return serverError();

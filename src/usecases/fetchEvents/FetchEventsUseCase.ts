@@ -6,10 +6,10 @@ const eventService = new EventService();
 
 export class FetchEventsUseCase {
   async fetchAll(input: FetchEventsInput): Promise<FetchEventsOutput> {
-    const events = await eventService.fetchAll({
+    const { events, _count } = await eventService.fetchAll({
       page: input.page,
       limit: input.limit | 9,
     });
-    return { events };
+    return { events, _count };
   }
 }

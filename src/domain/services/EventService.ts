@@ -2,6 +2,7 @@ import { type CreateEventInput } from "../../usecases/createEvent/CreateEventInp
 import { type DeleteEventInput } from "../../usecases/deleteEvent/DeleteEventInput";
 import { type FetchEventsInput } from "../../usecases/fetchEvents/FetchEventsInput";
 import { type SelectByIdEventInput } from "../../usecases/selectEventById/SelectByIdEventInput";
+import { type FetchEventsOutput } from "../../usecases/fetchEvents/FetchEventsOutput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
 
@@ -65,7 +66,7 @@ export class EventService {
     }
   }
 
-  async fetchAll(input: FetchEventsInput): Promise<IEvent[]> {
+  async fetchAll(input: FetchEventsInput): Promise<FetchEventsOutput> {
     try {
       const events = await database.event.findMany({
         where: {
@@ -79,7 +80,15 @@ export class EventService {
         take: input.limit,
         skip: (input.page - 1) * input.limit,
       });
-      return events;
+
+      const _count = await database.event.count({
+        where: {
+          dateStart: {
+            gte: new Date(),
+          },
+        },
+      });
+      return { events, _count };
     } catch (error) {
       throw new Error();
     }
