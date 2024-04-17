@@ -435,4 +435,18 @@ describe("Event Controller", () => {
     expect(body.statusCode).toBe(400);
     expect(event.message).toBe("Missing query: limit");
   });
+
+  test("GET fetchEvents - Should return 200 with trending events", async () => {
+    const { body } = await request.get("/api/v1/events/trending").expect(200);
+
+    const events: IEvent[] = body.body;
+    expect(body.statusCode).toBe(200);
+    if (events.length > 1) {
+      for (let i = 0; i < events.length - 1; i++) {
+        expect(events[i].viewCount).toBeGreaterThanOrEqual(
+          events[i + 1].viewCount,
+        );
+      }
+    }
+  });
 });
