@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import app from "../src/server";
 import { execSync } from "child_process";
-// import { type IEvent } from "../src/domain/models/Event";
+import { type IEvent } from "../src/domain/models/Event";
 
 const request = supertest(app);
 beforeAll(() => {
@@ -9,7 +9,7 @@ beforeAll(() => {
 });
 
 describe("Event Controller", () => {
-  // let eventToDelete: IEvent;
+  let eventToDelete: IEvent;
 
   test("POST crateEvent - Should return 400 if name is not provided", async () => {
     const { body } = await request
@@ -288,7 +288,7 @@ describe("Event Controller", () => {
       .expect(201);
 
     const event = body.body;
-    // eventToDelete = event;
+    eventToDelete = event;
 
     expect(body.statusCode).toBe(201);
     expect(event.id).not.toBe(null);
@@ -307,5 +307,45 @@ describe("Event Controller", () => {
     expect(event.importedId).toBe(null);
     expect(event.createdAt).not.toBe(null);
     expect(event.updatedAt).not.toBe(null);
+  });
+
+  test("DELETE deleteEvent - Should return 200", async () => {
+    const { body } = await request
+      .delete(`/api/v1/event/${eventToDelete.id}`)
+      .expect(200);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(200);
+    expect(event).toEqual(eventToDelete);
+  });
+
+  test("DELETE deleteEvent - Should return 404 if no id param is provided", async () => {
+    const { body } = await request.delete("/api/v1/event/").expect(404);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(event).toEqual("Path not found");
+  });
+
+  test("DELETE deleteEvent - Should return 404 if invalid id param is provided", async () => {
+    const { body } = await request
+      .delete(`/api/v1/event/${eventToDelete.id}`)
+      .expect(404);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(event).toEqual({ error: "Resource not found" });
+  });
+
+  test("DELETE deleteEvent - Should return 400 if event has already sold an ticket", async () => {
+    const { body } = await request
+      .delete("/api/v1/event/d7d005e0-0670-4fa8-81fd-3a2a1a930379")
+      .expect(400);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(400);
+    expect(event).toEqual({
+      message: "Event cannot be deleted because a ticket has already been sold",
+    });
   });
 });
