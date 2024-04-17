@@ -8,6 +8,7 @@ import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateEventUseCase } from "../../usecases/createEvent/CreateEventUseCase";
 import { DeleteEventUseCase } from "../../usecases/deleteEvent/DeleteEventUseCase";
 import { FetchEventsUseCase } from "../../usecases/fetchEvents/FetchEventsUseCase";
+import { SelectByIdEventUseCase } from "../../usecases/selectEventById/SelectByIdEventUseCase";
 import { z } from "zod";
 
 const userSchema = z.object({
@@ -33,6 +34,7 @@ interface passedMessageError {
 const createEventUseCase = new CreateEventUseCase();
 const deleteEventUseCase = new DeleteEventUseCase();
 const fetchEventsUseCase = new FetchEventsUseCase();
+const selectByIdEventUseCase = new SelectByIdEventUseCase();
 
 export class EventController {
   static async crateEvent(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -139,6 +141,31 @@ export class EventController {
       return {
         statusCode: 200,
         body: events,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async fetchEventById(httpRequest: HttpRequest): Promise<HttpResponse> {
+    try {
+      const requiredParams: string[] = ["id"];
+      for (const field of requiredParams) {
+        if (!httpRequest.params[field]) {
+          return badRequest(new MissingParamError(field));
+        }
+      }
+
+      const { id } = httpRequest.params;
+      const result = await selectByIdEventUseCase.selectById({ id });
+
+      if (!result) {
+        return notFound();
+      }
+
+      return {
+        statusCode: 200,
+        body: result.event,
       };
     } catch (error) {
       return serverError();

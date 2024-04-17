@@ -1,6 +1,7 @@
 import { type CreateEventInput } from "../../usecases/createEvent/CreateEventInput";
 import { type DeleteEventInput } from "../../usecases/deleteEvent/DeleteEventInput";
 import { type FetchEventsInput } from "../../usecases/fetchEvents/FetchEventsInput";
+import { type SelectByIdEventInput } from "../../usecases/selectEventById/SelectByIdEventInput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
 
@@ -79,6 +80,27 @@ export class EventService {
         skip: (input.page - 1) * input.limit,
       });
       return events;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async selectByIdEvent(input: SelectByIdEventInput): Promise<IEvent | null> {
+    try {
+      const event = await database.event.findUnique({
+        where: { id: input.id, dateStart: { gte: new Date() } },
+      });
+
+      if (event) {
+        await database.event.update({
+          where: { id: input.id },
+          data: {
+            viewCount: event.viewCount + 1,
+          },
+        });
+      }
+
+      return event;
     } catch (error) {
       throw new Error();
     }

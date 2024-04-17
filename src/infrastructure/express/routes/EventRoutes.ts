@@ -36,6 +36,17 @@ eventRouter
     } catch (error) {
       next(error);
     }
+  })
+  .get("/event/:id", async (req, res, next) => {
+    try {
+      const { statusCode, body } = await EventController.fetchEventById(req);
+      return res.status(statusCode).send({
+        statusCode,
+        body,
+      });
+    } catch (error) {
+      next(error);
+    }
   });
 
 export default eventRouter;
