@@ -1,8 +1,8 @@
 import type { HttpRequest, HttpResponse } from "../protocols";
 import { MissingParamError, InvalidParamError } from "../errors";
-import { badRequest, serverError } from "../helpers/http-helpers";
+import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateEventUseCase } from "../../usecases/createEvent/CreateEventUseCase";
-// import { DeleteUserUseCase } from "../../usecases/deleteUser/DeleteUserUseCase";
+import { DeleteEventUseCase } from "../../usecases/deleteEvent/DeleteEventUseCase";
 // import { SelectByEmailUserUseCase } from "../../usecases/selectUserById/SelectByEmailUserUseCase";
 import { z } from "zod";
 
@@ -27,6 +27,7 @@ interface passedMessageError {
 }
 
 const createEventUseCase = new CreateEventUseCase();
+const deleteEventUseCase = new DeleteEventUseCase();
 
 export class EventController {
   static async crateEvent(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -82,6 +83,35 @@ export class EventController {
 
       return {
         statusCode: 201,
+        body: result.event,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async deleteEvent(httpRequest: HttpRequest): Promise<HttpResponse> {
+    try {
+      const requiredParams: string[] = ["id"];
+      for (const field of requiredParams) {
+        if (!httpRequest.params[field]) {
+          return badRequest(new MissingParamError(field));
+        }
+      }
+
+      const { id } = httpRequest.params;
+      const result = await deleteEventUseCase.delete({ id });
+
+      if (typeof result === "string" && result === "Event not found") {
+        return notFound();
+      }
+
+      if (typeof result === "string") {
+        return badRequest(new Error(result));
+      }
+
+      return {
+        statusCode: 200,
         body: result.event,
       };
     } catch (error) {

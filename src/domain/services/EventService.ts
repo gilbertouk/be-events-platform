@@ -1,4 +1,5 @@
 import { type CreateEventInput } from "../../usecases/createEvent/CreateEventInput";
+import { type DeleteEventInput } from "src/usecases/deleteEvent/DeleteEventInput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
 
@@ -28,6 +29,34 @@ export class EventService {
           information: event.information,
         },
       });
+      return eventModel;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async delete(input: DeleteEventInput): Promise<IEvent | string> {
+    try {
+      const eventToDelete = await database.event.findUnique({
+        where: { id: input.id },
+      });
+
+      if (!eventToDelete) {
+        return "Event not found";
+      }
+
+      const orderModel = await database.order.findMany({
+        where: { eventId: input.id },
+      });
+
+      if (orderModel.length > 0) {
+        return "Event cannot be deleted because a ticket has already been sold";
+      }
+
+      const eventModel = await database.event.delete({
+        where: { id: input.id },
+      });
+
       return eventModel;
     } catch (error) {
       throw new Error();
