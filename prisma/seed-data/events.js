@@ -12,7 +12,8 @@ module.exports.events = [
     information: "For more information, visit londonfashionweek.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 10000,
-    logoUrl: "https://example.com/london_fashion_week_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-15T08:00:00Z",
     viewCount: 15,
   },
@@ -29,7 +30,8 @@ module.exports.events = [
     information: "For more information, visit edfringe.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 5000,
-    logoUrl: "https://example.com/edinburgh_fringe_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-03-10T10:00:00Z",
     viewCount: 1,
   },
@@ -46,7 +48,8 @@ module.exports.events = [
     information: "For more information, visit mif.co.uk",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 8000,
-    logoUrl: "https://example.com/manchester_international_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-03-20T12:00:00Z",
     viewCount: 36,
   },
@@ -63,7 +66,8 @@ module.exports.events = [
     information: "For more information, visit birminghampride.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 15000,
-    logoUrl: "https://example.com/birmingham_pride_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-01-20T09:00:00Z",
     viewCount: 152,
   },
@@ -81,7 +85,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 7000,
     logoUrl:
-      "https://example.com/glasgow_international_comedy_festival_logo.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-05T11:00:00Z",
     viewCount: 523,
   },
@@ -98,7 +102,8 @@ module.exports.events = [
     information: "For more information, visit liverpoolsoundcity.co.uk",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 10000,
-    logoUrl: "https://example.com/liverpool_sound_city_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-15T13:00:00Z",
     viewCount: 26,
   },
@@ -115,7 +120,8 @@ module.exports.events = [
     information: "For more information, visit brightonmarathon.co.uk",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 20000,
-    logoUrl: "https://example.com/brighton_marathon_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-01-10T15:00:00Z",
     viewCount: 153,
   },
@@ -133,7 +139,8 @@ module.exports.events = [
       "For more information, visit belfastinternationalartsfestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 8000,
-    logoUrl: "https://example.com/belfast_international_arts_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-29T10:00:00Z",
     viewCount: 23,
   },
@@ -150,7 +157,8 @@ module.exports.events = [
     information: "For more information, visit leedsfestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 70000,
-    logoUrl: "https://example.com/leeds_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-01-15T08:00:00Z",
     viewCount: 17,
   },
@@ -168,7 +176,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 25000,
     logoUrl:
-      "https://example.com/cardiff_international_food_and_drink_festival_logo.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-10T14:00:00Z",
     viewCount: 52,
   },
@@ -185,7 +193,8 @@ module.exports.events = [
     information: "For more information, visit oxfordliteraryfestival.org",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 12000,
-    logoUrl: "https://example.com/oxford_literary_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-09-18T12:00:00Z",
     viewCount: 16,
   },
@@ -202,7 +211,8 @@ module.exports.events = [
     information: "For more information, visit cambridgesciencefestival.org",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 35000,
-    logoUrl: "https://example.com/cambridge_science_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-05T09:00:00Z",
     viewCount: 63,
   },
@@ -220,7 +230,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 18000,
     logoUrl:
-      "https://example.com/newcastle_international_film_festival_logo.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-20T14:30:00Z",
     viewCount: 53,
   },
@@ -237,7 +247,8 @@ module.exports.events = [
     information: "For more information, visit yorkchocolatefestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 25000,
-    logoUrl: "https://example.com/york_chocolate_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-15T10:30:00Z",
     viewCount: 25,
   },
@@ -254,7 +265,8 @@ module.exports.events = [
     information: "For more information, visit bristolballoonfiesta.org",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 50000,
-    logoUrl: "https://example.com/bristol_balloon_fiesta_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-28T14:00:00Z",
     viewCount: 42,
   },
@@ -271,7 +283,8 @@ module.exports.events = [
     information: "For more information, visit sheffielddocfest.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 30000,
-    logoUrl: "https://example.com/sheffield_doc_fest_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-05T11:45:00Z",
     viewCount: 56,
   },
@@ -288,7 +301,8 @@ module.exports.events = [
     information: "For more information, visit cardifffoodfestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 40000,
-    logoUrl: "https://example.com/cardiff_food_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-20T13:15:00Z",
     viewCount: 5,
   },
@@ -305,7 +319,8 @@ module.exports.events = [
     information: "For more information, visit yorkchocolatefestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 30000,
-    logoUrl: "https://example.com/york_chocolate_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-15T10:30:00Z",
     viewCount: 32,
   },
@@ -322,7 +337,8 @@ module.exports.events = [
     information: "For more information, visit londoncoffeefestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 40000,
-    logoUrl: "https://example.com/london_coffee_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-20T09:45:00Z",
     viewCount: 41,
   },
@@ -339,7 +355,8 @@ module.exports.events = [
     information: "For more information, visit bristolfoodconnections.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 25000,
-    logoUrl: "https://example.com/bristol_food_connections_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-30T14:20:00Z",
     viewCount: 22,
   },
@@ -356,7 +373,8 @@ module.exports.events = [
     information: "For more information, visit edfringe.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 60000,
-    logoUrl: "https://example.com/edinburgh_fringe_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-09-25T12:10:00Z",
     viewCount: 36,
   },
@@ -373,7 +391,8 @@ module.exports.events = [
     information: "For more information, visit mif.co.uk",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 45000,
-    logoUrl: "https://example.com/manchester_international_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-08-15T09:00:00Z",
     viewCount: 69,
   },
@@ -391,7 +410,8 @@ module.exports.events = [
       "For more information, visit belfastinternationalartsfestival.com",
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 35000,
-    logoUrl: "https://example.com/belfast_international_arts_festival_logo.jpg",
+    logoUrl:
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-07-10T11:30:00Z",
     viewCount: 41,
   },
