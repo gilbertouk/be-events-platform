@@ -348,4 +348,48 @@ describe("Event Controller", () => {
       message: "Event cannot be deleted because a ticket has already been sold",
     });
   });
+
+  test("GET fetchEvents - Should return 200 with correct data", async () => {
+    const { body } = await request
+      .get("/api/v1/events?page=1&limit=9")
+      .expect(200);
+
+    const events = body.body;
+    expect(body.statusCode).toBe(200);
+    if (events.length > 0) {
+      events.forEach((event: IEvent) => {
+        expect(event).toHaveProperty("name");
+        expect(event).toHaveProperty("dateStart");
+        expect(event).toHaveProperty("dateEnd");
+        expect(event).toHaveProperty("price");
+        expect(event).toHaveProperty("description");
+        expect(event).toHaveProperty("information");
+        expect(event).toHaveProperty("userId");
+        expect(event).toHaveProperty("capacity");
+        expect(event).toHaveProperty("categoryId");
+        expect(event).toHaveProperty("logoUrl");
+        expect(event).toHaveProperty("location");
+        expect(event).toHaveProperty("importedDate");
+        expect(event).toHaveProperty("importedId");
+        expect(event).toHaveProperty("createdAt");
+        expect(event).toHaveProperty("updatedAt");
+      });
+    }
+  });
+
+  test("GET fetchEvents - Should return 400 if page query is not provided", async () => {
+    const { body } = await request.get("/api/v1/events?limit=9").expect(400);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(400);
+    expect(event.message).toBe("Missing query: page");
+  });
+
+  test("GET fetchEvents - Should return 400 if limit query is not provided", async () => {
+    const { body } = await request.get("/api/v1/events?page=1").expect(400);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(400);
+    expect(event.message).toBe("Missing query: limit");
+  });
 });
