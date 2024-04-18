@@ -11,7 +11,7 @@ export class UserService {
         data: {
           firstName: user.firstName,
           surname: user.surname,
-          email: user.email,
+          email: user.email.toLocaleLowerCase(),
           role: user.role,
         },
       });
@@ -45,7 +45,7 @@ export class UserService {
   async selectByEmailUser(user: SelectByEmailUserInput): Promise<IUser | null> {
     try {
       const userModel = await database.user.findUnique({
-        where: { email: user.email },
+        where: { email: user.email.toLocaleLowerCase() },
       });
 
       return userModel;
