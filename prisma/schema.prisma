@@ -38,7 +38,10 @@ model Event {
   price        String
   description  String
   information  String?
-  location     String
+  city         String
+  address      String
+  postcode     String
+  country      String
   userId       String
   capacity     Int
   category     Category  @relation(fields: [categoryId], references: [id])
