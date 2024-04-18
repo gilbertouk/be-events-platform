@@ -17,7 +17,9 @@ export class CategoryService {
 
   async fetchAll(): Promise<ICategory[]> {
     try {
-      const categories = await database.category.findMany();
+      const categories = await database.category.findMany({
+        orderBy: { name: "asc" },
+      });
       return categories;
     } catch (error) {
       throw new Error();
