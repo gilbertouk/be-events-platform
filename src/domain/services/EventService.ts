@@ -72,11 +72,59 @@ export class EventService {
 
   async fetchAll(input: FetchEventsInput): Promise<FetchEventsOutput> {
     try {
+      let filter: any = {};
+      const arrayQuery: any[] = [];
+
+      if (input.name) {
+        filter = {
+          name: {
+            contains: input.name,
+            mode: "insensitive",
+          },
+        };
+
+        arrayQuery.push(filter);
+      }
+
+      if (input.city) {
+        filter = {
+          city: {
+            contains: input.city,
+            mode: "insensitive",
+          },
+        };
+
+        arrayQuery.push(filter);
+      }
+
+      if (input.category) {
+        const category = await database.category.findFirst({
+          where: {
+            name: {
+              contains: input.category,
+              mode: "insensitive",
+            },
+          },
+        });
+
+        if (category) {
+          filter = {
+            categoryId: category.id,
+          };
+
+          arrayQuery.push(filter);
+        }
+      }
+
       const events = await database.event.findMany({
         where: {
           dateStart: {
             gte: new Date(),
           },
+          AND: arrayQuery,
+        },
+        include: {
+          category: true,
         },
         orderBy: {
           dateStart: "asc",

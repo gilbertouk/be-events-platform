@@ -9,6 +9,9 @@ export class FetchEventsUseCase {
     const { events, _count } = await eventService.fetchAll({
       page: +input.page,
       limit: +input.limit,
+      name: input.name,
+      city: input.city,
+      category: input.category,
     });
     return { events, _count };
   }

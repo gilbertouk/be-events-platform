@@ -1,3 +1,5 @@
+import { type ICategory } from "./Category";
+
 export interface IEvent {
   id: string;
   name: string;
@@ -19,4 +21,5 @@ export interface IEvent {
   viewCount: number;
   createdAt: Date;
   updatedAt: Date;
+  category?: ICategory;
 }

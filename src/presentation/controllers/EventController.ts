@@ -154,11 +154,14 @@ export class EventController {
         }
       }
 
-      const { page, limit } = httpRequest.query;
+      const { page, limit, name, city, category } = httpRequest.query;
 
       const { events, _count } = await fetchEventsUseCase.fetchAll({
         page,
         limit,
+        name,
+        city,
+        category,
       });
       return {
         statusCode: 200,
