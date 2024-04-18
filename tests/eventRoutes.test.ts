@@ -430,12 +430,32 @@ describe("Event Controller", () => {
     expect(event.message).toBe("Missing query: page");
   });
 
+  test("GET fetchEvents - Should return 400 if provided invalid value to page query", async () => {
+    const { body } = await request
+      .get("/api/v1/events?page=invalid&limit=9")
+      .expect(400);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(400);
+    expect(event.message).toBe("Invalid query: page");
+  });
+
   test("GET fetchEvents - Should return 400 if limit query is not provided", async () => {
     const { body } = await request.get("/api/v1/events?page=1").expect(400);
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
     expect(event.message).toBe("Missing query: limit");
+  });
+
+  test("GET fetchEvents - Should return 400 if provided invalid value to limit query", async () => {
+    const { body } = await request
+      .get("/api/v1/events?page=1&limit=invalid")
+      .expect(400);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(400);
+    expect(event.message).toBe("Invalid query: limit");
   });
 
   test("GET fetchEvents - Should return 200 with trending events", async () => {
