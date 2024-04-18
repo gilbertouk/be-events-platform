@@ -138,6 +138,7 @@ export class EventService {
           dateStart: {
             gte: new Date(),
           },
+          AND: arrayQuery,
         },
       });
 
