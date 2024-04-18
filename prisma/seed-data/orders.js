@@ -65,7 +65,7 @@ module.exports.orders = [
   {
     id: "a2db2a93-e1b0-41f4-8c3f-8b55a9533d44",
     userId: "1b2ac1e7-75fd-4f68-9bb7-c3d4bc4d09eh",
-    eventId: "d6b7fc69-4847-4d2b-af21-b443795a2b67",
+    eventId: "1a6c9383-cf2c-40dc-9f44-b47aa80bdc87",
     tickets: 3,
     createdAt: "2024-02-14T15:43:38Z",
   },
@@ -114,7 +114,7 @@ module.exports.orders = [
   {
     id: "5bca8e13-6a8a-4668-818c-315456ae9919",
     userId: "ba98afc3-c893-4ec5-bb71-230b7a0b7360",
-    eventId: "d6b7fc69-4847-4d2b-af21-b443795a2b67",
+    eventId: "a4baf76e-92d1-48cb-afeb-96a0575a4e62",
     tickets: 2,
     createdAt: "2024-04-02T02:33:21Z",
   },
