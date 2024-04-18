@@ -73,7 +73,7 @@ describe("User Controller", () => {
       .send({
         firstName: "any-firstName",
         surname: "any-surname",
-        email: "any-email@mail.com",
+        email: "ANY-EMAIL@mail.com",
         role: "USER",
       })
       .expect(201);
@@ -121,6 +121,22 @@ describe("User Controller", () => {
   test("GET selectByEmailUser - Should return 200", async () => {
     const { body } = await request
       .get("/api/v1/user/gilberto@gmail.com")
+      .expect(200);
+
+    const user = body.body;
+    expect(body.statusCode).toBe(200);
+    expect(user.firstName).toEqual("Gilberto");
+    expect(user.surname).toEqual("Silva");
+    expect(user.email).toEqual("gilberto@gmail.com");
+    expect(user.role).toEqual("ADMIN");
+    expect(user).toHaveProperty("id");
+    expect(user).toHaveProperty("createdAt");
+    expect(user).toHaveProperty("updatedAt");
+  });
+
+  test("GET selectByEmailUser - Should return 200 if uppercase email is provided", async () => {
+    const { body } = await request
+      .get("/api/v1/user/GILBERTO@GMAIL.COM")
       .expect(200);
 
     const user = body.body;
