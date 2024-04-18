@@ -3,6 +3,7 @@ import {
   MissingParamError,
   InvalidParamError,
   MissingQueryError,
+  InvalidQueryError,
 } from "../errors";
 import { badRequest, notFound, serverError } from "../helpers/http-helpers";
 import { CreateEventUseCase } from "../../usecases/createEvent/CreateEventUseCase";
@@ -134,6 +135,12 @@ export class EventController {
       for (const query of requiredQuery) {
         if (!httpRequest.query[query]) {
           return badRequest(new MissingQueryError(query));
+        }
+      }
+
+      for (const query of requiredQuery) {
+        if (Number.isNaN(+httpRequest.query[query])) {
+          return badRequest(new InvalidQueryError(query));
         }
       }
 
