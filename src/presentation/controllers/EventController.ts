@@ -79,7 +79,6 @@ export class EventController {
         const parsedMessage: passedMessageError[] = JSON.parse(
           isValid.error.message,
         );
-        console.log(parsedMessage);
         return badRequest(new InvalidParamError(parsedMessage[0].validation));
       }
 
