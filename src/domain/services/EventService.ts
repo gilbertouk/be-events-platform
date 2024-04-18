@@ -22,7 +22,10 @@ export class EventService {
           name: event.name,
           dateStart: event.dateStart,
           dateEnd: event.dateEnd,
-          location: event.location,
+          city: event.city,
+          address: event.address,
+          postcode: event.postcode,
+          country: event.country,
           categoryId: event.categoryId,
           price: event.price,
           description: event.description,
@@ -88,6 +91,7 @@ export class EventService {
           },
         },
       });
+
       return { events, _count };
     } catch (error) {
       throw new Error();

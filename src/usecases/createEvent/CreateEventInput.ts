@@ -2,7 +2,10 @@ export interface CreateEventInput {
   name: string;
   dateStart: Date;
   dateEnd: Date;
-  location: string;
+  city: string;
+  address: string;
+  postcode: string;
+  country: string;
   categoryId: string;
   price: string;
   description: string;

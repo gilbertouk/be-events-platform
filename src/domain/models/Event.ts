@@ -10,7 +10,10 @@ export interface IEvent {
   capacity: number;
   categoryId: string;
   logoUrl: string;
-  location: string;
+  city: string;
+  address: string;
+  postcode: string;
+  country: string;
   importedDate: Date | null;
   importedId: string | null;
   viewCount: number;
