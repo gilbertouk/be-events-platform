@@ -11,6 +11,7 @@ import { DeleteEventUseCase } from "../../usecases/deleteEvent/DeleteEventUseCas
 import { FetchEventsUseCase } from "../../usecases/fetchEvents/FetchEventsUseCase";
 import { SelectByIdEventUseCase } from "../../usecases/selectEventById/SelectByIdEventUseCase";
 import { FetchTrendingUseCase } from "../../usecases/fetchTrending/FetchTrendingUseCase";
+import { FetchEventsCitiesUseCase } from "../../usecases/fetchEventsCities/FetchEventsCitiesUseCase";
 import { z } from "zod";
 
 const userSchema = z.object({
@@ -41,6 +42,7 @@ const deleteEventUseCase = new DeleteEventUseCase();
 const fetchEventsUseCase = new FetchEventsUseCase();
 const selectByIdEventUseCase = new SelectByIdEventUseCase();
 const fetchTrendingUseCase = new FetchTrendingUseCase();
+const fetchEventsCitiesUseCase = new FetchEventsCitiesUseCase();
 
 export class EventController {
   static async crateEvent(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -173,6 +175,19 @@ export class EventController {
       return {
         statusCode: 200,
         body: events,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async fetchEventsCities(): Promise<HttpResponse> {
+    try {
+      const { eventsCities } =
+        await fetchEventsCitiesUseCase.fetchEventsCities();
+      return {
+        statusCode: 200,
+        body: eventsCities,
       };
     } catch (error) {
       return serverError();

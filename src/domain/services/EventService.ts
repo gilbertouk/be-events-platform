@@ -3,6 +3,7 @@ import { type DeleteEventInput } from "../../usecases/deleteEvent/DeleteEventInp
 import { type FetchEventsInput } from "../../usecases/fetchEvents/FetchEventsInput";
 import { type SelectByIdEventInput } from "../../usecases/selectEventById/SelectByIdEventInput";
 import { type FetchEventsOutput } from "../../usecases/fetchEvents/FetchEventsOutput";
+import { type EventsCities } from "../../usecases/fetchEventsCities/FetchEventsCitiesOutput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
 
@@ -132,6 +133,26 @@ export class EventService {
       });
 
       return events;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async fetchEventsCities(): Promise<EventsCities[]> {
+    try {
+      const eventsCities = await database.event.groupBy({
+        by: ["city"],
+        where: {
+          dateStart: {
+            gte: new Date(),
+          },
+        },
+        orderBy: {
+          city: "asc",
+        },
+      });
+
+      return eventsCities;
     } catch (error) {
       throw new Error();
     }

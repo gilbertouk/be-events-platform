@@ -37,9 +37,20 @@ eventRouter
       next(error);
     }
   })
-  .get("/events/trending", async (req, res, next) => {
+  .get("/events/trending", async (_req, res, next) => {
     try {
       const { statusCode, body } = await EventController.fetchTrending();
+      return res.status(statusCode).send({
+        statusCode,
+        body,
+      });
+    } catch (error) {
+      next(error);
+    }
+  })
+  .get("/events/cities", async (_req, res, next) => {
+    try {
+      const { statusCode, body } = await EventController.fetchEventsCities();
       return res.status(statusCode).send({
         statusCode,
         body,
