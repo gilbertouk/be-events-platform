@@ -17,7 +17,10 @@ describe("Event Controller", () => {
       .send({
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -40,7 +43,10 @@ describe("Event Controller", () => {
       .send({
         name: "Summer Music Festival",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -63,7 +69,10 @@ describe("Event Controller", () => {
       .send({
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -80,13 +89,16 @@ describe("Event Controller", () => {
     expect(body.body).toEqual({ message: "Missing param: dateEnd" });
   });
 
-  test("POST crateEvent - Should return 400 if location is not provided", async () => {
+  test("POST crateEvent - Should return 400 if city is not provided", async () => {
     const { body } = await request
       .post("/api/v1/event")
       .send({
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -100,7 +112,85 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: location" });
+    expect(body.body).toEqual({ message: "Missing param: city" });
+  });
+
+  test("POST crateEvent - Should return 400 if address is not provided", async () => {
+    const { body } = await request
+      .post("/api/v1/event")
+      .send({
+        name: "Summer Music Festival",
+        dateStart: "2024-07-20T10:00:00Z",
+        dateEnd: "2024-07-22T23:59:59Z",
+        city: "London",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
+        categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
+        price: "39.99",
+        description:
+          "The Summer Music Festival is a three-day celebration of music, featuring top artists from various genres performing on multiple stages. Held in the heart of London, this festival attracts music lovers from around the world. With a diverse lineup, delicious food vendors, and a vibrant atmosphere, it's an event not to be missed!",
+        userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
+        capacity: 5000,
+        logoUrl: "https://example.com/summer-music-festival-logo.png",
+        information:
+          "For tickets and more information, visit summermusicfestival.com",
+      })
+      .expect(400);
+
+    expect(body.statusCode).toBe(400);
+    expect(body.body).toEqual({ message: "Missing param: address" });
+  });
+
+  test("POST crateEvent - Should return 400 if postcode is not provided", async () => {
+    const { body } = await request
+      .post("/api/v1/event")
+      .send({
+        name: "Summer Music Festival",
+        dateStart: "2024-07-20T10:00:00Z",
+        dateEnd: "2024-07-22T23:59:59Z",
+        city: "London",
+        address: "123 Maple Street",
+        country: "United Kingdom",
+        categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
+        price: "39.99",
+        description:
+          "The Summer Music Festival is a three-day celebration of music, featuring top artists from various genres performing on multiple stages. Held in the heart of London, this festival attracts music lovers from around the world. With a diverse lineup, delicious food vendors, and a vibrant atmosphere, it's an event not to be missed!",
+        userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
+        capacity: 5000,
+        logoUrl: "https://example.com/summer-music-festival-logo.png",
+        information:
+          "For tickets and more information, visit summermusicfestival.com",
+      })
+      .expect(400);
+
+    expect(body.statusCode).toBe(400);
+    expect(body.body).toEqual({ message: "Missing param: postcode" });
+  });
+
+  test("POST crateEvent - Should return 400 if country is not provided", async () => {
+    const { body } = await request
+      .post("/api/v1/event")
+      .send({
+        name: "Summer Music Festival",
+        dateStart: "2024-07-20T10:00:00Z",
+        dateEnd: "2024-07-22T23:59:59Z",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
+        price: "39.99",
+        description:
+          "The Summer Music Festival is a three-day celebration of music, featuring top artists from various genres performing on multiple stages. Held in the heart of London, this festival attracts music lovers from around the world. With a diverse lineup, delicious food vendors, and a vibrant atmosphere, it's an event not to be missed!",
+        userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
+        capacity: 5000,
+        logoUrl: "https://example.com/summer-music-festival-logo.png",
+        information:
+          "For tickets and more information, visit summermusicfestival.com",
+      })
+      .expect(400);
+
+    expect(body.statusCode).toBe(400);
+    expect(body.body).toEqual({ message: "Missing param: country" });
   });
 
   test("POST crateEvent - Should return 400 if categoryId is not provided", async () => {
@@ -110,7 +200,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         price: "39.99",
         description:
           "The Summer Music Festival is a three-day celebration of music, featuring top artists from various genres performing on multiple stages. Held in the heart of London, this festival attracts music lovers from around the world. With a diverse lineup, delicious food vendors, and a vibrant atmosphere, it's an event not to be missed!",
@@ -133,7 +226,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         description:
           "The Summer Music Festival is a three-day celebration of music, featuring top artists from various genres performing on multiple stages. Held in the heart of London, this festival attracts music lovers from around the world. With a diverse lineup, delicious food vendors, and a vibrant atmosphere, it's an event not to be missed!",
@@ -156,7 +252,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
@@ -178,7 +277,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -201,7 +303,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -224,7 +329,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
         price: "39.99",
         description:
@@ -247,7 +355,10 @@ describe("Event Controller", () => {
         name: "Summer Music Festival",
         dateStart: "2024-07-20T10:00:00Z",
         dateEnd: "2024-07-22T23:59:59Z",
-        location: "London",
+        city: "London",
+        address: "123 Maple Street",
+        postcode: "SW1A 1AA",
+        country: "United Kingdom",
         categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc755",
         price: "39.99",
         description:
@@ -271,7 +382,10 @@ describe("Event Controller", () => {
       name: "Summer Music Festival",
       dateStart: "2024-07-20T10:00:00.000Z",
       dateEnd: "2024-07-22T23:59:59.000Z",
-      location: "London",
+      city: "London",
+      address: "123 Maple Street",
+      postcode: "SW1A 1AA",
+      country: "United Kingdom",
       categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
       price: "39.99",
       description:
@@ -302,7 +416,7 @@ describe("Event Controller", () => {
     expect(event.capacity).toBe(eventBody.capacity);
     expect(event.categoryId).toBe(eventBody.categoryId);
     expect(event.logoUrl).toBe(eventBody.logoUrl);
-    expect(event.location).toBe(eventBody.location);
+    expect(event.city).toBe(eventBody.city);
     expect(event.importedDate).toBe(null);
     expect(event.importedId).toBe(null);
     expect(event.createdAt).not.toBe(null);
@@ -327,7 +441,7 @@ describe("Event Controller", () => {
     expect(event.capacity).toBe(eventToDelete.capacity);
     expect(event.categoryId).toBe(eventToDelete.categoryId);
     expect(event.logoUrl).toBe(eventToDelete.logoUrl);
-    expect(event.location).toBe(eventToDelete.location);
+    expect(event.city).toBe(eventToDelete.city);
     expect(event.importedDate).toBe(eventToDelete.importedDate);
     expect(event.importedId).toBe(eventToDelete.importedId);
     expect(event.createdAt).toBe(eventToDelete.createdAt);
@@ -413,7 +527,7 @@ describe("Event Controller", () => {
         expect(event).toHaveProperty("capacity");
         expect(event).toHaveProperty("categoryId");
         expect(event).toHaveProperty("logoUrl");
-        expect(event).toHaveProperty("location");
+        expect(event).toHaveProperty("city");
         expect(event).toHaveProperty("importedDate");
         expect(event).toHaveProperty("importedId");
         expect(event).toHaveProperty("createdAt");
