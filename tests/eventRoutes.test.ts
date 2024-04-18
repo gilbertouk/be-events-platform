@@ -467,46 +467,6 @@ describe("Event Controller", () => {
     expect(body.body).toEqual({ error: "Resource not found" });
   });
 
-  test("DELETE deleteEvent - Should return 200", async () => {
-    const { body } = await request
-      .delete(`/api/v1/event/${eventToDelete.id}`)
-      .expect(200);
-
-    const event = body.body;
-    expect(body.statusCode).toBe(200);
-    expect(event.id).toBe(eventToDelete.id);
-  });
-
-  test("DELETE deleteEvent - Should return 404 if no id param is provided", async () => {
-    const { body } = await request.delete("/api/v1/event/").expect(404);
-
-    const event = body.body;
-    expect(body.statusCode).toBe(404);
-    expect(event).toEqual("Path not found");
-  });
-
-  test("DELETE deleteEvent - Should return 404 if invalid id param is provided", async () => {
-    const { body } = await request
-      .delete(`/api/v1/event/${eventToDelete.id}`)
-      .expect(404);
-
-    const event = body.body;
-    expect(body.statusCode).toBe(404);
-    expect(event).toEqual({ error: "Resource not found" });
-  });
-
-  test("DELETE deleteEvent - Should return 400 if event has already sold an ticket", async () => {
-    const { body } = await request
-      .delete("/api/v1/event/d7d005e0-0670-4fa8-81fd-3a2a1a930379")
-      .expect(400);
-
-    const event = body.body;
-    expect(body.statusCode).toBe(400);
-    expect(event).toEqual({
-      message: "Event cannot be deleted because a ticket has already been sold",
-    });
-  });
-
   test("GET fetchEvents - Should return 200 with correct data", async () => {
     const { body } = await request
       .get("/api/v1/events?page=1&limit=9")
@@ -535,6 +495,60 @@ describe("Event Controller", () => {
         expect(event).toHaveProperty("updatedAt");
       });
     }
+  });
+
+  test("GET fetchEvents - Should return 200 with correct data when filter name provided", async () => {
+    const { body } = await request
+      .get("/api/v1/events?page=1&limit=9&name=Summer Music Festival")
+      .expect(200);
+
+    const { events } = body.body;
+    expect(body.statusCode).toBe(200);
+    events.forEach((event: IEvent) => {
+      expect(event.name).toBe("Summer Music Festival");
+    });
+  });
+
+  test("GET fetchEvents - Should return 200 with correct data when filter city provided", async () => {
+    const { body } = await request
+      .get("/api/v1/events?page=1&limit=9&city=london")
+      .expect(200);
+
+    const { events } = body.body;
+    expect(body.statusCode).toBe(200);
+    events.forEach((event: IEvent) => {
+      expect(event.city).toBe("London");
+    });
+  });
+
+  test("GET fetchEvents - Should return 200 with correct data when filter category provided", async () => {
+    const { body } = await request
+      .get("/api/v1/events?page=1&limit=9&category=music")
+      .expect(200);
+
+    const { events } = body.body;
+    expect(body.statusCode).toBe(200);
+    events.forEach((event: IEvent) => {
+      expect(event.categoryId).toBe("05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700");
+      expect(event?.category?.name).toBe("Music");
+    });
+  });
+
+  test("GET fetchEvents - Should return 200 with correct data when filter category, name and city provided", async () => {
+    const { body } = await request
+      .get(
+        "/api/v1/events?page=1&limit=9&category=music&nameSummer Music Festival=&city=london",
+      )
+      .expect(200);
+
+    const { events } = body.body;
+    expect(body.statusCode).toBe(200);
+    events.forEach((event: IEvent) => {
+      expect(event.name).toBe("Summer Music Festival");
+      expect(event.city).toBe("London");
+      expect(event.categoryId).toBe("05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700");
+      expect(event?.category?.name).toBe("Music");
+    });
   });
 
   test("GET fetchEvents - Should return 400 if page query is not provided", async () => {
@@ -598,5 +612,45 @@ describe("Event Controller", () => {
         expect(item.city[0]).toEqual(item.city[0].toLocaleUpperCase());
       });
     }
+  });
+
+  test("DELETE deleteEvent - Should return 200", async () => {
+    const { body } = await request
+      .delete(`/api/v1/event/${eventToDelete.id}`)
+      .expect(200);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(200);
+    expect(event.id).toBe(eventToDelete.id);
+  });
+
+  test("DELETE deleteEvent - Should return 404 if no id param is provided", async () => {
+    const { body } = await request.delete("/api/v1/event/").expect(404);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(event).toEqual("Path not found");
+  });
+
+  test("DELETE deleteEvent - Should return 404 if invalid id param is provided", async () => {
+    const { body } = await request
+      .delete(`/api/v1/event/${eventToDelete.id}`)
+      .expect(404);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(404);
+    expect(event).toEqual({ error: "Resource not found" });
+  });
+
+  test("DELETE deleteEvent - Should return 400 if event has already sold an ticket", async () => {
+    const { body } = await request
+      .delete("/api/v1/event/d7d005e0-0670-4fa8-81fd-3a2a1a930379")
+      .expect(400);
+
+    const event = body.body;
+    expect(body.statusCode).toBe(400);
+    expect(event).toEqual({
+      message: "Event cannot be deleted because a ticket has already been sold",
+    });
   });
 });
