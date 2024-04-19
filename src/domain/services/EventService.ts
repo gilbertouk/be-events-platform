@@ -3,7 +3,6 @@ import { type DeleteEventInput } from "../../usecases/deleteEvent/DeleteEventInp
 import { type FetchEventsInput } from "../../usecases/fetchEvents/FetchEventsInput";
 import { type SelectByIdEventInput } from "../../usecases/selectEventById/SelectByIdEventInput";
 import { type FetchEventsOutput } from "../../usecases/fetchEvents/FetchEventsOutput";
-import { type EventsCities } from "../../usecases/fetchEventsCities/FetchEventsCitiesOutput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
 
@@ -187,7 +186,7 @@ export class EventService {
     }
   }
 
-  async fetchEventsCities(): Promise<EventsCities[]> {
+  async fetchEventsCities(): Promise<string[]> {
     try {
       const eventsCities = await database.event.groupBy({
         by: ["city"],
@@ -196,12 +195,11 @@ export class EventService {
             gte: new Date(),
           },
         },
-        orderBy: {
-          city: "asc",
-        },
       });
 
-      return eventsCities;
+      const arrayCities = eventsCities.map((event) => event.city).sort();
+
+      return arrayCities;
     } catch (error) {
       throw new Error();
     }
