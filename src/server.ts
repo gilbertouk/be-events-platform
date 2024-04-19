@@ -5,7 +5,9 @@ import routes from "./infrastructure/express/routes";
 const app = express();
 
 const allowedOrigins = [
-  "https://be-events-platfrom.onrender.com/api/v1",
+  "https://events.gilbertosilva.dev",
+  "https://events-platform-79431.web.app/",
+  "https://events-platform-79431.web.app/",
   "http://127.0.0.1:5173",
   "http://localhost:5173",
 ];
