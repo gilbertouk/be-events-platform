@@ -19,7 +19,7 @@ describe("Category Controller", () => {
       })
       .expect(400);
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: name" });
+    expect(body.body).toEqual({ error: "Missing param: name" });
   });
 
   test("POST crateCategory - Should return 400 if no icon is provided", async () => {
@@ -30,7 +30,7 @@ describe("Category Controller", () => {
       })
       .expect(400);
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: icon" });
+    expect(body.body).toEqual({ error: "Missing param: icon" });
   });
 
   test("POST crateCategory - Should return 201 with correct values that were provided", async () => {

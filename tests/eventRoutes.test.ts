@@ -34,7 +34,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: name" });
+    expect(body.body).toEqual({ error: "Missing param: name" });
   });
 
   test("POST crateEvent - Should return 400 if dateStart is not provided", async () => {
@@ -60,7 +60,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: dateStart" });
+    expect(body.body).toEqual({ error: "Missing param: dateStart" });
   });
 
   test("POST crateEvent - Should return 400 if dateEnd is not provided", async () => {
@@ -86,7 +86,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: dateEnd" });
+    expect(body.body).toEqual({ error: "Missing param: dateEnd" });
   });
 
   test("POST crateEvent - Should return 400 if city is not provided", async () => {
@@ -112,7 +112,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: city" });
+    expect(body.body).toEqual({ error: "Missing param: city" });
   });
 
   test("POST crateEvent - Should return 400 if address is not provided", async () => {
@@ -138,7 +138,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: address" });
+    expect(body.body).toEqual({ error: "Missing param: address" });
   });
 
   test("POST crateEvent - Should return 400 if postcode is not provided", async () => {
@@ -164,7 +164,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: postcode" });
+    expect(body.body).toEqual({ error: "Missing param: postcode" });
   });
 
   test("POST crateEvent - Should return 400 if country is not provided", async () => {
@@ -190,7 +190,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: country" });
+    expect(body.body).toEqual({ error: "Missing param: country" });
   });
 
   test("POST crateEvent - Should return 400 if categoryId is not provided", async () => {
@@ -216,7 +216,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: categoryId" });
+    expect(body.body).toEqual({ error: "Missing param: categoryId" });
   });
 
   test("POST crateEvent - Should return 400 if price is not provided", async () => {
@@ -242,7 +242,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: price" });
+    expect(body.body).toEqual({ error: "Missing param: price" });
   });
 
   test("POST crateEvent - Should return 400 if description is not provided", async () => {
@@ -267,7 +267,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: description" });
+    expect(body.body).toEqual({ error: "Missing param: description" });
   });
 
   test("POST crateEvent - Should return 400 if userId is not provided", async () => {
@@ -293,7 +293,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: userId" });
+    expect(body.body).toEqual({ error: "Missing param: userId" });
   });
 
   test("POST crateEvent - Should return 400 if capacity is not provided", async () => {
@@ -319,7 +319,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: capacity" });
+    expect(body.body).toEqual({ error: "Missing param: capacity" });
   });
 
   test("POST crateEvent - Should return 400 if logoUrl is not provided", async () => {
@@ -345,7 +345,7 @@ describe("Event Controller", () => {
       .expect(400);
 
     expect(body.statusCode).toBe(400);
-    expect(body.body).toEqual({ message: "Missing param: logoUrl" });
+    expect(body.body).toEqual({ error: "Missing param: logoUrl" });
   });
 
   test("POST crateEvent - Should return 400 if categoryId provided not exist", async () => {
@@ -373,7 +373,7 @@ describe("Event Controller", () => {
 
     expect(body.statusCode).toBe(400);
     expect(body.body).toEqual({
-      message: "Invalid param: userId or categoryId not found",
+      error: "Invalid param: userId or categoryId not found",
     });
   });
 
@@ -555,7 +555,7 @@ describe("Event Controller", () => {
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
-    expect(event.message).toBe("Missing query: page");
+    expect(event.error).toBe("Missing query: page");
   });
 
   test("GET fetchEvents - Should return 400 if provided invalid value to page query", async () => {
@@ -565,7 +565,7 @@ describe("Event Controller", () => {
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
-    expect(event.message).toBe("Invalid query: page");
+    expect(event.error).toBe("Invalid query: page");
   });
 
   test("GET fetchEvents - Should return 400 if limit query is not provided", async () => {
@@ -573,7 +573,7 @@ describe("Event Controller", () => {
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
-    expect(event.message).toBe("Missing query: limit");
+    expect(event.error).toBe("Missing query: limit");
   });
 
   test("GET fetchEvents - Should return 400 if provided invalid value to limit query", async () => {
@@ -583,7 +583,7 @@ describe("Event Controller", () => {
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
-    expect(event.message).toBe("Invalid query: limit");
+    expect(event.error).toBe("Invalid query: limit");
   });
 
   test("GET fetchEvents - Should return 200 with trending events", async () => {
@@ -649,7 +649,7 @@ describe("Event Controller", () => {
     const event = body.body;
     expect(body.statusCode).toBe(400);
     expect(event).toEqual({
-      message: "Event cannot be deleted because a ticket has already been sold",
+      error: "Event cannot be deleted because a ticket has already been sold",
     });
   });
 });
