@@ -1,10 +1,10 @@
 import express from "express";
-import cors from "cors";
+import cors, { type CorsOptions } from "cors";
 import routes from "./infrastructure/express/routes";
 
 const app = express();
 
-const allowedOrigins = [
+const whitelist = [
   "https://events.gilbertosilva.dev",
   "https://events-platform-79431.web.app/",
   "https://events-platform-79431.firebaseapp.com/",
@@ -12,9 +12,14 @@ const allowedOrigins = [
   "http://localhost:5173",
 ];
 
-const corsOptions: cors.CorsOptions = {
-  origin: allowedOrigins,
-  credentials: true,
+const corsOptions: CorsOptions = {
+  origin: (origin: string | undefined, callback: any) => {
+    if (origin && (whitelist.includes(origin) || !origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 };
 
 app.use(cors(corsOptions));
