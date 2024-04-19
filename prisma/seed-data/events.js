@@ -389,7 +389,7 @@ module.exports.events = [
     postcode: "BS1 1AA",
     country: "United Kingdom",
     categoryId: "3156b7a4-85ec-4769-8bae-868f6cb635d7",
-    price: "Varies",
+    price: "Free",
     description:
       "Bristol Food Connections is a citywide festival celebrating Bristol's vibrant food culture and community. It features a diverse program of events, including food tastings, cooking demonstrations, workshops, talks, and food-themed walking tours. The festival highlights local producers, chefs, and food entrepreneurs, showcasing the best of Bristol's culinary scene. It also explores important food-related topics such as sustainability, food waste reduction, and community food initiatives.",
     information: "For more information, visit bristolfoodconnections.com",
