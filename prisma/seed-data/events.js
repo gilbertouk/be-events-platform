@@ -354,7 +354,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 15000,
     logoUrl:
-      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/ijkl90123.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-25T10:00:00Z",
     viewCount: 35,
   },
@@ -418,7 +418,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 12000,
     logoUrl:
-      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/mnop45678.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-18T09:30:00Z",
     viewCount: 28,
   },
@@ -440,7 +440,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 18000,
     logoUrl:
-      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/qrst56789.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-22T13:15:00Z",
     viewCount: 45,
   },
@@ -462,7 +462,7 @@ module.exports.events = [
     userId: "2a5687de-7730-4725-83f8-faf3a5ccce19",
     capacity: 25000,
     logoUrl:
-      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/efgh45678.jpg",
+      "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-09-15T14:45:00Z",
     viewCount: 70,
   },
