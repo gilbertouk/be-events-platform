@@ -2,7 +2,6 @@ import supertest from "supertest";
 import app from "../src/server";
 import { execSync } from "child_process";
 import { type IEvent } from "../src/domain/models/Event";
-import { type EventsCities } from "src/usecases/fetchEventsCities/FetchEventsCitiesOutput";
 
 const request = supertest(app);
 beforeAll(() => {
@@ -604,12 +603,12 @@ describe("Event Controller", () => {
   test("GET fetchEventsCities - Should return 200 with array of events cities", async () => {
     const { body } = await request.get("/api/v1/events/cities").expect(200);
 
-    const eventsCities: EventsCities[] = body.body;
+    const eventsCities: string[] = body.body;
     expect(body.statusCode).toBe(200);
     if (eventsCities.length > 0) {
-      eventsCities.forEach((item) => {
-        expect(typeof item.city).toBe("string");
-        expect(item.city[0]).toEqual(item.city[0].toLocaleUpperCase());
+      eventsCities.forEach((city) => {
+        expect(typeof city).toBe("string");
+        expect(city[0]).toEqual(city[0].toLocaleUpperCase());
       });
     }
   });
