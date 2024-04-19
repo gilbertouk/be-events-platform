@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/prefer-includes */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import express from "express";
-import cors, { type CorsOptions } from "cors";
+import cors from "cors";
 import routes from "./infrastructure/express/routes";
 
 const app = express();
@@ -12,9 +14,19 @@ const whitelist = [
   "http://localhost:5173",
 ];
 
-const corsOptions: CorsOptions = {
-  origin: (origin: string | undefined, callback: any) => {
-    if (origin && (whitelist.includes(origin) || !origin)) {
+// const corsOptions: CorsOptions = {
+//   origin: (origin: string | undefined, callback: any) => {
+//     if (origin && (whitelist.includes(origin) || !origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+// };
+
+const corsOptions = {
+  origin: function (origin: any, callback: any) {
+    if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
