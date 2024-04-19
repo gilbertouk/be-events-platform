@@ -14,23 +14,17 @@ const whitelist = [
   "http://localhost:5173",
 ];
 
-// const corsOptions: CorsOptions = {
-//   origin: (origin: string | undefined, callback: any) => {
-//     if (origin && (whitelist.includes(origin) || !origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-// };
-
 const corsOptions = {
   origin: function (origin: any, callback: any) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
+    console.log("CORS origin: ", origin);
+    if (!origin) return callback(null, true);
+    if (whitelist.indexOf(origin) === -1) {
+      const msg =
+        "The CORS policy for this site does not " +
+        "allow access from the specified Origin.";
+      return callback(new Error(msg), false);
     }
+    return callback(null, true);
   },
 };
 
