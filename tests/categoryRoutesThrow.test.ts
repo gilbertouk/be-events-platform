@@ -6,9 +6,9 @@ const request = supertest(app);
 jest.mock("../src/usecases/createCategory/CreateCategoryUseCase");
 
 describe("Category Controller throws ", () => {
-  test("POST crateCategory throw 500 - Should throw an error when CreateCategoryUseCase.execute throws an error", async () => {
+  test("POST crateCategory throw 500 - Should throw an error when CreateCategoryUseCase.create throws an error", async () => {
     (CreateCategoryUseCase as jest.Mock).mockImplementationOnce(() => ({
-      execute: jest.fn().mockRejectedValueOnce(new Error()),
+      create: jest.fn().mockRejectedValueOnce(new Error()),
     }));
 
     const response = await request.post("/api/v1/category").send({

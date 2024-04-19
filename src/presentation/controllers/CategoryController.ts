@@ -21,7 +21,7 @@ export class CategoryController {
 
       const { name, icon } = httpRequest.body;
 
-      const { category } = await createCategoryUseCase.execute({ name, icon });
+      const { category } = await createCategoryUseCase.create({ name, icon });
 
       return {
         statusCode: 201,
