@@ -4,7 +4,7 @@ import { EventController } from "../../../presentation/controllers/EventControll
 const eventRouter = express.Router();
 
 eventRouter
-  .post("/event", async (req, res, next) => {
+  .post("/", async (req, res, next) => {
     try {
       const { statusCode, body } = await EventController.crateEvent(req);
       return res.status(statusCode).send({
@@ -15,7 +15,7 @@ eventRouter
       next(error);
     }
   })
-  .delete("/event/:id", async (req, res, next) => {
+  .delete("/:id", async (req, res, next) => {
     try {
       const { statusCode, body } = await EventController.deleteEvent(req);
       return res.status(statusCode).send({
@@ -26,7 +26,7 @@ eventRouter
       next(error);
     }
   })
-  .get("/events", async (req, res, next) => {
+  .get("/all", async (req, res, next) => {
     try {
       const { statusCode, body } = await EventController.fetchEvents(req);
       return res.status(statusCode).send({
@@ -37,7 +37,7 @@ eventRouter
       next(error);
     }
   })
-  .get("/events/trending", async (_req, res, next) => {
+  .get("/all/trending", async (_req, res, next) => {
     try {
       const { statusCode, body } = await EventController.fetchTrending();
       return res.status(statusCode).send({
@@ -48,7 +48,7 @@ eventRouter
       next(error);
     }
   })
-  .get("/events/cities", async (_req, res, next) => {
+  .get("/all/cities", async (_req, res, next) => {
     try {
       const { statusCode, body } = await EventController.fetchEventsCities();
       return res.status(statusCode).send({
@@ -59,7 +59,7 @@ eventRouter
       next(error);
     }
   })
-  .get("/event/:id", async (req, res, next) => {
+  .get("/:id", async (req, res, next) => {
     try {
       const { statusCode, body } = await EventController.fetchEventById(req);
       return res.status(statusCode).send({

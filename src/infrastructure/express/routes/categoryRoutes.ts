@@ -4,7 +4,7 @@ import { CategoryController } from "../../../presentation/controllers/CategoryCo
 const categoryRouter = express.Router();
 
 categoryRouter
-  .post("/category", async (req, res, next) => {
+  .post("/", async (req, res, next) => {
     try {
       const { statusCode, body } = await CategoryController.crateCategory(req);
       return res.status(statusCode).send({
@@ -15,7 +15,7 @@ categoryRouter
       next(error);
     }
   })
-  .delete("/category/:id", async (req, res, next) => {
+  .delete("/:id", async (req, res, next) => {
     try {
       const { statusCode, body } = await CategoryController.deleteCategory(req);
       return res.status(statusCode).send({
@@ -26,7 +26,7 @@ categoryRouter
       next(error);
     }
   })
-  .get("/categories", async (_req, res, next) => {
+  .get("/all", async (_req, res, next) => {
     try {
       const { statusCode, body } = await CategoryController.getCategories();
       return res.status(statusCode).send({
