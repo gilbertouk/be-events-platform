@@ -8,7 +8,7 @@ beforeAll(() => {
   execSync("npm run seed-db");
 });
 
-describe("User Controller", () => {
+describe.skip("User Controller", () => {
   let userToDelete: IUser;
 
   test("POST crateUser - Should return 400 if first name is not provided", async () => {

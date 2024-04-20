@@ -82,11 +82,11 @@ describe("Category Controller", () => {
   });
 
   test("GET getCategories - Should return 200", async () => {
-    await request.get("/api/v1/categories").expect(200);
+    await request.get("/api/v1/category/all").expect(200);
   });
 
   test("GET getCategories - Should return all categories on database", async () => {
-    const { body } = await request.get("/api/v1/categories");
+    const { body } = await request.get("/api/v1/category/all");
     const categories = body.body;
     expect(categories.length).toBe(12);
     categories.forEach((category: ICategory) => {

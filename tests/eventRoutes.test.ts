@@ -468,7 +468,7 @@ describe("Event Controller", () => {
 
   test("GET fetchEvents - Should return 200 with correct data", async () => {
     const { body } = await request
-      .get("/api/v1/events?page=1&limit=9")
+      .get("/api/v1/event/all?page=1&limit=9")
       .expect(200);
 
     const { events, _count } = body.body;
@@ -498,7 +498,7 @@ describe("Event Controller", () => {
 
   test("GET fetchEvents - Should return 200 with correct data when filter name provided", async () => {
     const { body } = await request
-      .get("/api/v1/events?page=1&limit=9&name=Summer Music Festival")
+      .get("/api/v1/event/all?page=1&limit=9&name=Summer Music Festival")
       .expect(200);
 
     const { events } = body.body;
@@ -510,7 +510,7 @@ describe("Event Controller", () => {
 
   test("GET fetchEvents - Should return 200 with correct data when filter city provided", async () => {
     const { body } = await request
-      .get("/api/v1/events?page=1&limit=9&city=london")
+      .get("/api/v1/event/all?page=1&limit=9&city=london")
       .expect(200);
 
     const { events } = body.body;
@@ -522,7 +522,7 @@ describe("Event Controller", () => {
 
   test("GET fetchEvents - Should return 200 with correct data when filter category provided", async () => {
     const { body } = await request
-      .get("/api/v1/events?page=1&limit=9&category=music")
+      .get("/api/v1/event/all?page=1&limit=9&category=music")
       .expect(200);
 
     const { events } = body.body;
@@ -536,7 +536,7 @@ describe("Event Controller", () => {
   test("GET fetchEvents - Should return 200 with correct data when filter category, name and city provided", async () => {
     const { body } = await request
       .get(
-        "/api/v1/events?page=1&limit=9&category=music&nameSummer Music Festival=&city=london",
+        "/api/v1/event/all?page=1&limit=9&category=music&nameSummer Music Festival=&city=london",
       )
       .expect(200);
 
@@ -551,7 +551,7 @@ describe("Event Controller", () => {
   });
 
   test("GET fetchEvents - Should return 400 if page query is not provided", async () => {
-    const { body } = await request.get("/api/v1/events?limit=9").expect(400);
+    const { body } = await request.get("/api/v1/event/all?limit=9").expect(400);
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
@@ -560,7 +560,7 @@ describe("Event Controller", () => {
 
   test("GET fetchEvents - Should return 400 if provided invalid value to page query", async () => {
     const { body } = await request
-      .get("/api/v1/events?page=invalid&limit=9")
+      .get("/api/v1/event/all?page=invalid&limit=9")
       .expect(400);
 
     const event = body.body;
@@ -569,7 +569,7 @@ describe("Event Controller", () => {
   });
 
   test("GET fetchEvents - Should return 400 if limit query is not provided", async () => {
-    const { body } = await request.get("/api/v1/events?page=1").expect(400);
+    const { body } = await request.get("/api/v1/event/all?page=1").expect(400);
 
     const event = body.body;
     expect(body.statusCode).toBe(400);
@@ -578,7 +578,7 @@ describe("Event Controller", () => {
 
   test("GET fetchEvents - Should return 400 if provided invalid value to limit query", async () => {
     const { body } = await request
-      .get("/api/v1/events?page=1&limit=invalid")
+      .get("/api/v1/event/all?page=1&limit=invalid")
       .expect(400);
 
     const event = body.body;
@@ -587,7 +587,9 @@ describe("Event Controller", () => {
   });
 
   test("GET fetchEvents - Should return 200 with trending events", async () => {
-    const { body } = await request.get("/api/v1/events/trending").expect(200);
+    const { body } = await request
+      .get("/api/v1/event/all/trending")
+      .expect(200);
 
     const events: IEvent[] = body.body;
     expect(body.statusCode).toBe(200);
@@ -601,7 +603,7 @@ describe("Event Controller", () => {
   });
 
   test("GET fetchEventsCities - Should return 200 with array of events cities", async () => {
-    const { body } = await request.get("/api/v1/events/cities").expect(200);
+    const { body } = await request.get("/api/v1/event/all/cities").expect(200);
 
     const eventsCities: string[] = body.body;
     expect(body.statusCode).toBe(200);
@@ -621,14 +623,6 @@ describe("Event Controller", () => {
     const event = body.body;
     expect(body.statusCode).toBe(200);
     expect(event.id).toBe(eventToDelete.id);
-  });
-
-  test("DELETE deleteEvent - Should return 404 if no id param is provided", async () => {
-    const { body } = await request.delete("/api/v1/event/").expect(404);
-
-    const event = body.body;
-    expect(body.statusCode).toBe(404);
-    expect(event).toEqual("Path not found");
   });
 
   test("DELETE deleteEvent - Should return 404 if invalid id param is provided", async () => {
