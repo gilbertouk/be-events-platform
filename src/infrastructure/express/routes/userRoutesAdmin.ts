@@ -2,13 +2,13 @@ import express from "express";
 import { UserController } from "../../../presentation/controllers/UserController";
 import { AuthMiddleware } from "../middlewares/authMiddleware";
 
-const userRouterPrivate = express.Router();
+const userRouterAdmin = express.Router();
 
-userRouterPrivate.use(AuthMiddleware.verifyAccessToken);
+userRouterAdmin.use(AuthMiddleware.verifyAdminAccess);
 
-userRouterPrivate.get("/:email", async (req, res, next) => {
+userRouterAdmin.delete("/:id", async (req, res, next) => {
   try {
-    const { statusCode, body } = await UserController.selectByEmailUser(req);
+    const { statusCode, body } = await UserController.deleteUser(req);
     return res.status(statusCode).send({
       statusCode,
       body,
@@ -18,4 +18,4 @@ userRouterPrivate.get("/:email", async (req, res, next) => {
   }
 });
 
-export default userRouterPrivate;
+export default userRouterAdmin;

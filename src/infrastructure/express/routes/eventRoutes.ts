@@ -4,28 +4,6 @@ import { EventController } from "../../../presentation/controllers/EventControll
 const eventRouter = express.Router();
 
 eventRouter
-  .post("/", async (req, res, next) => {
-    try {
-      const { statusCode, body } = await EventController.crateEvent(req);
-      return res.status(statusCode).send({
-        statusCode,
-        body,
-      });
-    } catch (error) {
-      next(error);
-    }
-  })
-  .delete("/:id", async (req, res, next) => {
-    try {
-      const { statusCode, body } = await EventController.deleteEvent(req);
-      return res.status(statusCode).send({
-        statusCode,
-        body,
-      });
-    } catch (error) {
-      next(error);
-    }
-  })
   .get("/all", async (req, res, next) => {
     try {
       const { statusCode, body } = await EventController.fetchEvents(req);
