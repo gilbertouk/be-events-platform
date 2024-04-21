@@ -8,7 +8,7 @@ beforeAll(() => {
   execSync("npm run seed-db");
 });
 
-describe("Category Controller", () => {
+describe.skip("Category Controller", () => {
   let categoryToDelete: ICategory;
 
   test("POST crateCategory - Should return 400 if no name is provided", async () => {

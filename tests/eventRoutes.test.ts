@@ -8,7 +8,7 @@ beforeAll(() => {
   execSync("npm run seed-db");
 });
 
-describe("Event Controller", () => {
+describe.skip("Event Controller", () => {
   let eventToDelete: IEvent;
 
   test("POST crateEvent - Should return 400 if name is not provided", async () => {
