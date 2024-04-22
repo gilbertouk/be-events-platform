@@ -91,7 +91,7 @@ STRIPE_PUBLISHABLE_KEY="XXXXXXX"
 STRIPE_SECRET_KEY="XXXXXXXXXXX"
 STRIPE_SUCCESS_URL="http://localhost:5173/checkout?success=true" # Customers will be directed to this URL if the checkout succeeds
 STRIPE_CANCEL_URL="http://localhost:5173/checkout?canceled=true" # Customers will be directed to this URL if they decide to cancel payment and return to our website
-STRIPE_SECRET_WEBHOOK="XXXXXXX" # For the payment flow to work correctly, the webhook must be configured through the Stripe CLI, which will listen to the "checkout.session.completed" events and automatically make a request to our API and complete the purchase order. Se more https://docs.stripe.com/payments/checkout/fulfill-orders?lang=node
+STRIPE_SECRET_WEBHOOK="XXXXXXX" # For the payment flow to work correctly, the webhook must be configured through the Stripe CLI or via the dashboard here https://dashboard.stripe.com/test/webhooks, and and must direct requests to our endpoint at /api/v1/stripe/webhook, which will listen to the "checkout.session.completed" events and automatically make a request to our API and complete the purchase order. Se more https://docs.stripe.com/payments/checkout/fulfill-orders?lang=node
 
 ````
 
