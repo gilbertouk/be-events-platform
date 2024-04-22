@@ -5,4 +5,7 @@ export interface IOrder {
   tickets: number;
   createdAt: Date;
   updatedAt: Date;
+  sessionStripeId?: string;
+  statusStripeId?: string;
+  paymentStripeId?: string;
 }

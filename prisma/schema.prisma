@@ -75,8 +75,8 @@ model Order {
   eventId         String
   tickets         Int
   sessionStripeId String?
-  statusSripeId   String?
-  paumentStripeId String?
+  statusStripeId  String?
+  paymentStripeId String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
