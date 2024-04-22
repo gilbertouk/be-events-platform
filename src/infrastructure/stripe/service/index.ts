@@ -28,10 +28,7 @@ interface SessionInput {
   name: string;
   priceStripeId: string;
   quantity: number;
-}
-
-interface SessionOutput {
-  url: string | null;
+  eventId: string;
 }
 
 interface StripeCustomer {
@@ -84,7 +81,7 @@ export class StrikeService {
     }
   }
 
-  async createCheckoutSession(input: SessionInput): Promise<SessionOutput> {
+  async createCheckoutSession(input: SessionInput): Promise<any> {
     try {
       const customer = await this.createStripeCustomer({
         email: input.email,
@@ -106,7 +103,7 @@ export class StrikeService {
       });
 
       return {
-        url: session.url,
+        session,
       };
     } catch (error) {
       console.error(error);
