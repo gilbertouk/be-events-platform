@@ -1,9 +1,9 @@
 module.exports.users = [
   {
     id: "2a5687de-7730-4725-83f8-faf3a5ccce19",
-    firstName: "Gilberto",
-    surname: "Silva",
-    email: "gilberto@gmail.com",
+    firstName: "Ayla",
+    surname: "Pjetri",
+    email: "admin@mail.com",
     role: "ADMIN",
     createdAt: "2024-03-01T08:30:00Z",
   },

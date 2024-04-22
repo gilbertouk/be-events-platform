@@ -9,7 +9,7 @@ module.exports.events = [
     postcode: "SW1V 3PH",
     country: "United Kingdom",
     categoryId: "3eeb3b77-af0c-4b8a-8ec1-37d5f7f495f5",
-    price: "60.90",
+    price: "Free",
     description:
       "London Fashion Week is a bi-annual event showcasing the latest trends in fashion. Designers from all over the world gather in London to present their collections, which often set the tone for upcoming fashion seasons. The event not only attracts fashion industry professionals such as buyers, stylists, and journalists but also celebrities and fashion enthusiasts. It includes runway shows, presentations, exhibitions, and parties, offering a comprehensive view of the current state of fashion.",
     information: "For more information, visit londonfashionweek.com",
@@ -18,7 +18,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-15T08:00:00Z",
-    viewCount: 15,
+    viewCount: 0,
   },
   {
     id: "0ec0855e-f868-4e67-ae6d-d70ff16dbb0a",
@@ -30,7 +30,7 @@ module.exports.events = [
     postcode: "EH1 1AA",
     country: "United Kingdom",
     categoryId: "2f155e15-6760-42b4-bf30-3282e0d8af93",
-    price: "26.90",
+    price: "Free",
     description:
       "The Edinburgh Fringe Festival is the world's largest arts festival, held annually in Scotland's capital. It features thousands of performances across various art forms, including theatre, comedy, dance, music, and spoken word. The festival is renowned for its open-access policy, allowing anyone with a show to perform. It offers a platform for both established artists and emerging talent to showcase their work to a diverse and international audience. Alongside performances, the festival also hosts workshops, panel discussions, and events, making it a vibrant celebration of creativity and culture.",
     information: "For more information, visit edfringe.com",
@@ -39,7 +39,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-03-10T10:00:00Z",
-    viewCount: 1,
+    viewCount: 0,
   },
   {
     id: "d7d005e0-0670-4fa8-81fd-3a2a1a930379",
@@ -51,7 +51,7 @@ module.exports.events = [
     postcode: "M1 1AA",
     country: "United Kingdom",
     categoryId: "2f155e15-6760-42b4-bf30-3282e0d8af93",
-    price: "17.99",
+    price: "Free",
     description:
       "The Manchester International Festival is a biennial arts festival that takes place in various venues across Manchester. It celebrates innovative and cutting-edge performances in arts and culture, showcasing new commissions and collaborations by leading artists from around the world. The festival's program includes a diverse range of events spanning theatre, music, dance, visual arts, and digital innovation. It aims to engage audiences in unique and immersive experiences, fostering creativity and pushing artistic boundaries.",
     information: "For more information, visit mif.co.uk",
@@ -60,7 +60,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-03-20T12:00:00Z",
-    viewCount: 36,
+    viewCount: 0,
   },
   {
     id: "3d4c107a-f0e6-4edf-96c4-214bc7c8a634",
@@ -81,7 +81,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-01-20T09:00:00Z",
-    viewCount: 152,
+    viewCount: 0,
   },
   {
     id: "9db84ac2-2de1-499d-baeb-5e31b6f0a0e2",
@@ -93,7 +93,7 @@ module.exports.events = [
     postcode: "G1 2AA",
     country: "United Kingdom",
     categoryId: "41d9fcbb-84e5-4598-af4c-7ed79519a9d3",
-    price: "58.99",
+    price: "Free",
     description:
       "The Glasgow International Comedy Festival is one of Europe's largest comedy festivals, showcasing top comedians from around the world. Held annually in the city of Glasgow, the festival features a diverse program of stand-up comedy, sketch shows, improve performances, and comedy theatre. It takes place in various venues across the city, including theatres, clubs, pubs, and even pop-up comedy tents. The festival attracts comedy fans of all ages and tastes, offering something for everyone, from established names to up-and-coming talent.",
     information: "For more information, visit glasgowcomedyfestival.com",
@@ -102,7 +102,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-05T11:00:00Z",
-    viewCount: 523,
+    viewCount: 0,
   },
   {
     id: "5905b70a-6e97-4d9e-8633-1d11ef31f3fc",
@@ -114,7 +114,7 @@ module.exports.events = [
     postcode: "L1 1AA",
     country: "United Kingdom",
     categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
-    price: "27.90",
+    price: "Free",
     description:
       "Liverpool Sound City is an annual music festival and industry conference held in Liverpool. It showcases emerging and established artists from various genres, including indie rock, electronic, hip hop, and more. The festival takes place in venues across the city, including clubs, bars, theatres, and outdoor stages. In addition to live music performances, Sound City hosts networking events, industry panels, workshops, and keynote speeches, providing opportunities for artists, industry professionals, and music enthusiasts to connect and collaborate.",
     information: "For more information, visit liverpoolsoundcity.co.uk",
@@ -123,7 +123,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-15T13:00:00Z",
-    viewCount: 26,
+    viewCount: 0,
   },
   {
     id: "f914c7dd-1bf9-4a3b-80bc-cba9cd8b53af",
@@ -135,7 +135,7 @@ module.exports.events = [
     postcode: "BN1 1AA",
     country: "United Kingdom",
     categoryId: "a3df2556-07b7-4e41-b7b8-cb055c2e5f57",
-    price: "10.99",
+    price: "Free",
     description:
       "The Brighton Marathon is an annual long-distance running event held in the coastal city of Brighton, England. It is one of the UK's most popular marathons, attracting thousands of participants from around the world. The scenic route takes runners through the vibrant streets of Brighton and Hove, along the stunning seafront, and past iconic landmarks. The event not only offers a challenging and rewarding race experience but also provides a festive atmosphere with live music, cheering spectators, and community support.",
     information: "For more information, visit brightonmarathon.co.uk",
@@ -144,7 +144,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-01-10T15:00:00Z",
-    viewCount: 153,
+    viewCount: 0,
   },
   {
     id: "ea2a636f-d6f1-47c8-bb25-cd16c1d6f2c8",
@@ -156,7 +156,7 @@ module.exports.events = [
     postcode: "BT1 1AA",
     country: "United Kingdom",
     categoryId: "2f155e15-6760-42b4-bf30-3282e0d8af93",
-    price: "72.90",
+    price: "Free",
     description:
       "The Belfast International Arts Festival is an annual multidisciplinary arts festival held in the city of Belfast, Northern Ireland. It celebrates creativity and culture through a diverse program of performances, exhibitions, installations, and events. The festival showcases local, national, and international talent across various art forms, including theatre, dance, visual arts, music, and film. It aims to inspire and engage audiences, fostering cultural exchange and dialogue.",
     information:
@@ -166,7 +166,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-29T10:00:00Z",
-    viewCount: 23,
+    viewCount: 0,
   },
   {
     id: "44f04016-bf2e-4a76-96f5-620bd5e1f932",
@@ -178,7 +178,7 @@ module.exports.events = [
     postcode: "LS1 1AA",
     country: "United Kingdom",
     categoryId: "05e6ec62-d72b-44a7-9bb7-ebc3fbbdc700",
-    price: "30.00",
+    price: "Free",
     description:
       "Leeds Festival is one of the UK's premier music festivals, held annually over the August bank holiday weekend. It features a diverse lineup of top bands and artists from around the world, spanning genres such as rock, indie, pop, hip hop, and electronic music. The festival takes place at Bramham Park in Leeds, offering multiple stages, camping facilities, and a range of food and drink options. In addition to music, the festival also includes comedy performances, cinema screenings, and other entertainment, making it a must-attend event for music lovers.",
     information: "For more information, visit leedsfestival.com",
@@ -187,7 +187,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-01-15T08:00:00Z",
-    viewCount: 17,
+    viewCount: 0,
   },
   {
     id: "b5e27e90-47ec-4cc7-b69e-b221462e2a3e",
@@ -199,7 +199,7 @@ module.exports.events = [
     postcode: "CF10 1AA",
     country: "United Kingdom",
     categoryId: "3156b7a4-85ec-4769-8bae-868f6cb635d7",
-    price: "18.00",
+    price: "Free",
     description:
       "The Cardiff International Food and Drink Festival is an annual culinary event held in the Welsh capital of Cardiff. It showcases the best of Welsh and international cuisine, featuring food stalls, pop-up restaurants, cooking demonstrations, and tasting sessions. The festival celebrates the rich culinary heritage of Wales while also embracing global food trends and flavors. It provides a vibrant and inclusive environment for food lovers to explore, indulge, and enjoy.",
     information: "For more information, visit cardifffoodfestival.com",
@@ -208,7 +208,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2024-02-10T14:00:00Z",
-    viewCount: 52,
+    viewCount: 0,
   },
   {
     id: "fd9b6a22-52e4-47af-b7d8-989b7db8cc49",
@@ -220,7 +220,7 @@ module.exports.events = [
     postcode: "OX1 1AA",
     country: "United Kingdom",
     categoryId: "ebd9f833-050b-4e7d-8032-6f335a379c0e",
-    price: "9.90",
+    price: "Free",
     description:
       "The Oxford Literary Festival is an annual celebration of literature and ideas held in the historic city of Oxford, England. It brings together authors, poets, journalists, scholars, and readers from around the world for a diverse program of talks, readings, panel discussions, and literary events. The festival covers a wide range of topics and genres, including fiction, non-fiction, poetry, history, politics, and science. It provides a platform for intellectual exchange, creative exploration, and literary discovery.",
     information: "For more information, visit oxfordliteraryfestival.org",
@@ -229,7 +229,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-09-18T12:00:00Z",
-    viewCount: 16,
+    viewCount: 0,
   },
   {
     id: "d631891b-8eb5-4820-80b4-37d5dce3a251",
@@ -241,7 +241,7 @@ module.exports.events = [
     postcode: "CB2 1AA",
     country: "United Kingdom",
     categoryId: "3edc016d-f40a-49fb-9125-6e2015f1cf9e",
-    price: "150.90",
+    price: "Free",
     description:
       "The Cambridge Science Festival is an annual public event showcasing the wonders of science, technology, engineering, and mathematics (STEM). It takes place in the historic city of Cambridge, home to the world-renowned University of Cambridge and its cutting-edge research institutions. The festival features interactive exhibits, hands-on activities, talks, demonstrations, workshops, and tours, engaging people of all ages and backgrounds in the excitement of scientific discovery. It aims to inspire curiosity, spark creativity, and promote scientific literacy.",
     information: "For more information, visit cambridgesciencefestival.org",
@@ -250,7 +250,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-05T09:00:00Z",
-    viewCount: 63,
+    viewCount: 0,
   },
   {
     id: "68e91d5e-8e1a-4902-8645-394f9e56d899",
@@ -262,7 +262,7 @@ module.exports.events = [
     postcode: "NE1 1AA",
     country: "United Kingdom",
     categoryId: "7c7e8d62-cfc7-46f3-91b2-f02bc48e57f3",
-    price: "130.99",
+    price: "Free",
     description:
       "The Newcastle International Film Festival is an annual celebration of independent and international cinema held in the city of Newcastle upon Tyne, England. It showcases a diverse selection of films from around the world, including feature films, documentaries, shorts, and experimental works. The festival provides a platform for filmmakers to showcase their creativity, share their stories, and connect with audiences. In addition to screenings, the festival also hosts Q&A sessions, industry panels, workshops, and networking events, fostering collaboration and dialogue within the film community.",
     information: "For more information, visit newcastlefilmfestival.org",
@@ -271,7 +271,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-20T14:30:00Z",
-    viewCount: 53,
+    viewCount: 0,
   },
   {
     id: "1a6c9383-cf2c-40dc-9f44-b47aa80bdc87",
@@ -292,7 +292,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-15T10:30:00Z",
-    viewCount: 25,
+    viewCount: 0,
   },
   {
     id: "888c8fe5-3b6b-41d3-8cfd-963c024611fb",
@@ -313,7 +313,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-28T14:00:00Z",
-    viewCount: 42,
+    viewCount: 0,
   },
   {
     id: "f47391e1-f36d-4e32-88c0-0b1e49cb4390",
@@ -325,7 +325,7 @@ module.exports.events = [
     postcode: "S1 1AA",
     country: "United Kingdom",
     categoryId: "58a4fc0a-9828-4597-96b6-6e8e0e157062",
-    price: "78.00",
+    price: "Free",
     description:
       "Sheffield Doc/Fest is an annual documentary film festival held in the city of Sheffield, England. It is one of the UK's leading documentary festivals, showcasing non-fiction storytelling through film screenings, interactive exhibits, live events, and industry conferences. The festival features a diverse selection of documentary films from around the world, covering a wide range of subjects and perspectives. It provides a platform for filmmakers, industry professionals, and audiences to explore pressing issues, share diverse stories, and engage in dialogue.",
     information: "For more information, visit sheffielddocfest.com",
@@ -334,7 +334,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-05T11:45:00Z",
-    viewCount: 56,
+    viewCount: 0,
   },
   {
     id: "8a826df8-6f80-4f27-b2b7-06ad886c8d1a",
@@ -346,7 +346,7 @@ module.exports.events = [
     postcode: "SN1 1LD",
     country: "United Kingdom",
     categoryId: "ebd9f833-050b-4e7d-8032-6f335a379c0e",
-    price: "15.00",
+    price: "Free",
     description:
       "The Swindon Literature Festival is an annual celebration of literature and storytelling held in the historic town of Swindon, England. It features a diverse lineup of authors, poets, and speakers from various genres, offering readings, discussions, workshops, and book signings. The festival aims to promote literacy and a love for literature among all ages, fostering a sense of community and intellectual engagement. With its rich program of events and welcoming atmosphere, the Swindon Literature Festival attracts both local residents and visitors from afar.",
     information:
@@ -356,7 +356,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-25T10:00:00Z",
-    viewCount: 35,
+    viewCount: 0,
   },
   {
     id: "2a5687de-7730-4725-83f8-faf3a5ccce19",
@@ -368,7 +368,7 @@ module.exports.events = [
     postcode: "SW1A 1AA",
     country: "United Kingdom",
     categoryId: "3156b7a4-85ec-4769-8bae-868f6cb635d7",
-    price: "25.00",
+    price: "Free",
     description:
       "The London Coffee Festival is Europe's largest gathering of coffee enthusiasts, featuring artisan coffee, gourmet food stalls, barista competitions, and interactive workshops. Coffee lovers can sample a wide variety of specialty coffees from around the world, learn about coffee brewing techniques, and discover the latest trends in the coffee industry. The festival offers a lively atmosphere with live music, DJs, and coffee-inspired art installations.",
     information: "For more information, visit londoncoffeefestival.com",
@@ -377,7 +377,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-11-20T09:45:00Z",
-    viewCount: 41,
+    viewCount: 0,
   },
   {
     id: "29d9d7cf-2714-4b6c-87b5-5de9c42898d6",
@@ -398,7 +398,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-30T14:20:00Z",
-    viewCount: 22,
+    viewCount: 0,
   },
   {
     id: "a4baf76e-92d1-48cb-afeb-96a0575a4e62",
@@ -410,7 +410,7 @@ module.exports.events = [
     postcode: "SN1 2EH",
     country: "United Kingdom",
     categoryId: "183ea1a1-4cd9-446d-9ba0-64dd07ad4234",
-    price: "20.00",
+    price: "Free",
     description:
       "The Swindon Jazz Festival is an annual celebration of jazz music held in the charming town of Swindon, England. It features a lineup of talented jazz musicians and bands performing a variety of styles, including traditional, contemporary, fusion, and experimental jazz. The festival offers performances at intimate venues throughout the town, creating a vibrant atmosphere for music lovers to enjoy. With its diverse program and inclusive spirit, the Swindon Jazz Festival attracts audiences of all ages and backgrounds.",
     information:
@@ -420,7 +420,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-12-18T09:30:00Z",
-    viewCount: 28,
+    viewCount: 0,
   },
   {
     id: "5b6206f5-067b-42e4-b42c-bd8229b1d5ff",
@@ -432,7 +432,7 @@ module.exports.events = [
     postcode: "BS1 5JY",
     country: "United Kingdom",
     categoryId: "3156b7a4-85ec-4769-8bae-868f6cb635d7",
-    price: "25.00",
+    price: "Free",
     description:
       "The Bristol Beer Festival is an annual celebration of craft beer and brewing held in the vibrant city of Bristol, England. It brings together a wide selection of local and international breweries, offering attendees the opportunity to sample a diverse range of beers, ales, and ciders. In addition to tastings, the festival features live music, food vendors, and educational seminars on brewing techniques and beer styles. With its lively atmosphere and enthusiastic community of beer enthusiasts, the Bristol Beer Festival is a must-attend event for lovers of craft beer.",
     information:
@@ -442,7 +442,7 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-10-22T13:15:00Z",
-    viewCount: 45,
+    viewCount: 0,
   },
   {
     id: "408896e0-8507-4b65-9a79-1d0d9d871992",
@@ -454,7 +454,7 @@ module.exports.events = [
     postcode: "G3 8RR",
     country: "United Kingdom",
     categoryId: "2f155e15-6760-42b4-bf30-3282e0d8af93",
-    price: "30.00",
+    price: "Free",
     description:
       "The Glasgow Film Festival is an annual celebration of cinema held in the dynamic city of Glasgow, Scotland. It showcases a diverse selection of films from around the world, including premieres, retrospectives, documentaries, and experimental works. The festival provides a platform for emerging filmmakers alongside established talents, fostering innovation and creativity in the world of cinema. With its vibrant atmosphere and engaging programming, the Glasgow Film Festival attracts film enthusiasts and industry professionals alike.",
     information:
@@ -464,6 +464,6 @@ module.exports.events = [
     logoUrl:
       "https://res.cloudinary.com/dvrwr83w9/image/upload/c_fill,h_800,w_1200/c_limit,h_800,w_1200/events/psvoapwsvs5mayf0uto1.jpg",
     createdAt: "2023-09-15T14:45:00Z",
-    viewCount: 70,
+    viewCount: 0,
   },
 ];
