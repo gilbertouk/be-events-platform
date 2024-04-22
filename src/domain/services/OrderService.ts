@@ -1,5 +1,6 @@
-import { type IOrder } from "../models/Order";
 import { type CreateOrderInput } from "../../usecases/createOrder/CreateOrderInput";
+import { type UpdateOrderStatusInput } from "../../usecases/updateOrderStatus/UpdateOrderStatusInput";
+import { type IOrder } from "../models/Order";
 import { database } from "../../infrastructure/database/";
 
 export class OrderService {
@@ -17,6 +18,22 @@ export class OrderService {
       });
 
       return orderModel;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async updateStatus(order: UpdateOrderStatusInput): Promise<void> {
+    try {
+      await database.order.updateMany({
+        where: {
+          sessionStripeId: order.sessionStripeId,
+        },
+        data: {
+          statusStripeId: order.statusStripeId,
+          paymentStripeId: order.paymentStripeId,
+        },
+      });
     } catch (error) {
       throw new Error();
     }

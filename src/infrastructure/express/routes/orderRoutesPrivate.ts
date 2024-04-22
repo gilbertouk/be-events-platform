@@ -2,9 +2,6 @@ import express from "express";
 import { OrderController } from "../../../presentation/controllers/OrderController";
 import { AuthMiddleware } from "../middlewares/authMiddleware";
 
-// import { StrikeService } from "../../../infrastructure/stripe/service/index";
-// const strikeService = new StrikeService();
-
 const orderRouterPrivate = express.Router();
 
 orderRouterPrivate.use(AuthMiddleware.verifyAccessToken);

@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import express, { type Request } from "express";
-import { stripe } from "../../stripe/service/index";
+import { StrikeService, stripe } from "../../stripe/service/index";
 
 const stripeRouter = express.Router();
+const strikeService = new StrikeService();
 
 stripeRouter.post(
   "/webhook",
   express.raw({ type: "application/json" }),
-  (req: Request, res) => {
+  async (req: Request, res) => {
     const sig: string | string[] | undefined = req.headers["stripe-signature"];
 
     let event;
@@ -29,7 +30,7 @@ stripeRouter.post(
       case "checkout.session.completed": {
         const session = event.data.object;
         // Save an order in your database, marked as 'awaiting payment'
-        createOrder(session);
+        // createOrder(session);
 
         // Check if the order is paid (for example, from a card payment)
         //
@@ -37,29 +38,29 @@ stripeRouter.post(
         // you're still waiting for funds to be transferred from the customer's
         // account.
         if (session.payment_status === "paid") {
-          fulfillOrder(session);
+          await strikeService.fulfillOrder(session);
         }
 
         break;
       }
 
-      case "checkout.session.async_payment_succeeded": {
-        const session = event.data.object;
+      // case "checkout.session.async_payment_succeeded": {
+      //   const session = event.data.object;
 
-        // Fulfill the purchase...
-        fulfillOrder(session);
+      //   // Fulfill the purchase...
+      //   fulfillOrder(session);
 
-        break;
-      }
+      //   break;
+      // }
 
-      case "checkout.session.async_payment_failed": {
-        const session = event.data.object;
+      // case "checkout.session.async_payment_failed": {
+      //   const session = event.data.object;
 
-        // Send an email to the customer asking them to retry their order
-        emailCustomerAboutFailedPayment(session);
+      //   // Send an email to the customer asking them to retry their order
+      //   emailCustomerAboutFailedPayment(session);
 
-        break;
-      }
+      //   break;
+      // }
     }
 
     return res.status(200).end();
@@ -68,17 +69,12 @@ stripeRouter.post(
 
 export default stripeRouter;
 
-const fulfillOrder = (session: any): void => {
-  // TODO: fill me in
-  console.log("Fulfilling order", session);
-};
+// const createOrder = (session: any): void => {
+//   // TODO: fill me in
+//   console.log("Creating order", session);
+// };
 
-const createOrder = (session: any): void => {
-  // TODO: fill me in
-  console.log("Creating order", session);
-};
-
-const emailCustomerAboutFailedPayment = (session: any): void => {
-  // TODO: fill me in
-  console.log("Emailing customer", session);
-};
+// const emailCustomerAboutFailedPayment = (session: any): void => {
+//   // TODO: fill me in
+//   console.log("Emailing customer", session);
+// };

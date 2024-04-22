@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { stripeConfig } from "../../../config/stripe";
+import { UpdateOrderUseCase } from "src/usecases/updateOrderStatus/UpdateOrderStatusUseCase";
 
 export const stripe = new Stripe(stripeConfig.secretKey ?? "", {
   apiVersion: "2024-04-10",
@@ -35,6 +36,8 @@ interface StripeCustomer {
   email: string;
   name: string;
 }
+
+const updateOrderUseCase = new UpdateOrderUseCase();
 
 export class StrikeService {
   async createProduct(input: ProductInput): Promise<ProductOutput> {
@@ -109,5 +112,15 @@ export class StrikeService {
       console.error(error);
       throw new Error();
     }
+  }
+
+  async fulfillOrder(session: any): Promise<void> {
+    // TODO: fill me in
+    console.log("Fulfilling order status");
+    await updateOrderUseCase.updateStatus({
+      sessionStripeId: session.id,
+      statusStripeId: session.status,
+      paymentStripeId: session.payment_intent,
+    });
   }
 }
