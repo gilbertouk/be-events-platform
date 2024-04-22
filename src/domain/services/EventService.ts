@@ -5,6 +5,9 @@ import { type SelectByIdEventInput } from "../../usecases/selectEventById/Select
 import { type FetchEventsOutput } from "../../usecases/fetchEvents/FetchEventsOutput";
 import { type IEvent } from "../models/Event";
 import { database } from "../../infrastructure/database/";
+import { StrikeService } from "../../infrastructure/stripe/service";
+
+const strikeService = new StrikeService();
 
 export class EventService {
   async create(event: CreateEventInput): Promise<IEvent | null> {
@@ -15,6 +18,21 @@ export class EventService {
 
       if (!category) {
         return null;
+      }
+
+      let result;
+      if (event.price !== "Free") {
+        const arrayPrice = event.price.split(".");
+        const formattedPrice = arrayPrice[0] + arrayPrice[1];
+        result = await strikeService.createProduct({
+          name: event.name,
+          description: event.description,
+          default_price_data: {
+            currency: "gbp",
+            unit_amount_decimal: formattedPrice,
+          },
+          images: [event.logoUrl],
+        });
       }
 
       const eventModel = await database.event.create({
@@ -33,6 +51,8 @@ export class EventService {
           capacity: event.capacity,
           logoUrl: event.logoUrl,
           information: event.information,
+          priceStripeId: result?.priceStripeId,
+          prodStripeId: result?.prodStripeId,
         },
       });
       return eventModel;

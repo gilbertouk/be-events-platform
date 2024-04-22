@@ -16,6 +16,8 @@ export interface IEvent {
   address: string;
   postcode: string;
   country: string;
+  priceStripeId: string | null;
+  prodStripeId: string | null;
   importedDate: Date | null;
   importedId: string | null;
   viewCount: number;
