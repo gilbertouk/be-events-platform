@@ -25,7 +25,7 @@ Note: If you want to log in with an administrator user on the front-end, you can
 
 With this user you will have access to the form to create new events on the website
 
-The hosted version of the website uses this email as admin: admin@ mail.com
+The hosted version of the website uses this email as admin: admin@mail.com
 password: 10203040
 
 </p>
