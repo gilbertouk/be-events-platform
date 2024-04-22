@@ -68,12 +68,15 @@ model Category {
 }
 
 model Order {
-  id        String   @id @default(uuid())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  event     Event    @relation(fields: [eventId], references: [id])
-  eventId   String
-  tickets   Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String   @id @default(uuid())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String
+  event           Event    @relation(fields: [eventId], references: [id])
+  eventId         String
+  tickets         Int
+  sessionStripeId String?
+  statusSripeId   String?
+  paumentStripeId String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
