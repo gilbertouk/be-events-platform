@@ -23,6 +23,22 @@ interface ProductOutput {
   priceStripeId: string;
 }
 
+interface SessionInput {
+  email: string;
+  name: string;
+  priceStripeId: string;
+  quantity: number;
+}
+
+interface SessionOutput {
+  url: string | null;
+}
+
+interface StripeCustomer {
+  email: string;
+  name: string;
+}
+
 export class StrikeService {
   async createProduct(input: ProductInput): Promise<ProductOutput> {
     try {
@@ -39,6 +55,61 @@ export class StrikeService {
         priceStripeId: product.default_price as string,
       };
     } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async getStripeCustomerByEmail(email: string): Promise<Stripe.Customer> {
+    try {
+      const customers = await stripe.customers.list({ email });
+      return customers.data[0];
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async createStripeCustomer(input: StripeCustomer): Promise<Stripe.Customer> {
+    try {
+      const customer = await this.getStripeCustomerByEmail(input.email);
+      if (customer) return customer;
+
+      const createdCustomer = await stripe.customers.create({
+        email: input.email,
+        name: input.name,
+      });
+
+      return createdCustomer;
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async createCheckoutSession(input: SessionInput): Promise<SessionOutput> {
+    try {
+      const customer = await this.createStripeCustomer({
+        email: input.email,
+        name: input.name,
+      });
+
+      const session = await stripe.checkout.sessions.create({
+        currency: "gbp",
+        customer: customer.id,
+        mode: "payment",
+        success_url: stripeConfig.successUrl,
+        cancel_url: stripeConfig.cancelUrl,
+        line_items: [
+          {
+            price: input.priceStripeId,
+            quantity: input.quantity,
+          },
+        ],
+      });
+
+      return {
+        url: session.url,
+      };
+    } catch (error) {
+      console.error(error);
       throw new Error();
     }
   }
