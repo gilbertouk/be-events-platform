@@ -31,29 +31,31 @@ enum Role {
 }
 
 model Event {
-  id           String    @id @default(uuid())
-  name         String
-  dateStart    DateTime
-  dateEnd      DateTime
-  price        String
-  description  String
-  information  String?
-  city         String
-  address      String
-  postcode     String
-  country      String
-  userId       String
-  capacity     Int
-  category     Category  @relation(fields: [categoryId], references: [id])
-  categoryId   String
-  logoUrl      String
-  importedDate DateTime?
-  importedId   String?
-  viewCount    Int       @default(0)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  organizer    User      @relation(fields: [userId], references: [id])
-  Order        Order[]
+  id            String    @id @default(uuid())
+  name          String
+  dateStart     DateTime
+  dateEnd       DateTime
+  price         String
+  description   String
+  information   String?
+  city          String
+  address       String
+  postcode      String
+  country       String
+  userId        String
+  capacity      Int
+  category      Category  @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  logoUrl       String
+  importedDate  DateTime?
+  importedId    String?
+  prodStripeId  String?
+  priceStripeId String?
+  viewCount     Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  organizer     User      @relation(fields: [userId], references: [id])
+  Order         Order[]
 }
 
 model Category {
