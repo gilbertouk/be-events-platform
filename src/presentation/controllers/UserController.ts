@@ -5,6 +5,7 @@ import { CreateUserUseCase } from "../../usecases/createUser/CreateUserUseCase";
 import { DeleteUserUseCase } from "../../usecases/deleteUser/DeleteUserUseCase";
 import { SelectByEmailUserUseCase } from "../../usecases/selectUserByEmail/SelectByEmailUserUseCase";
 import { z } from "zod";
+import { SelectOrdersByUserIdUseCase } from "../../usecases/selectOrdersByUserId/SelectOrdersByUserIdUseCase";
 
 const userSchema = z.object({
   firstName: z.string(),
@@ -23,6 +24,7 @@ interface passedMessageError {
 const createUserUseCase = new CreateUserUseCase();
 const deleteUserUseCase = new DeleteUserUseCase();
 const selectByEmailUserUseCase = new SelectByEmailUserUseCase();
+const selectOrdersByUserIdUseCase = new SelectOrdersByUserIdUseCase();
 
 export class UserController {
   static async crateUser(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -113,6 +115,38 @@ export class UserController {
       return {
         statusCode: 200,
         body: result.user,
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async selectOrdersByUserEmail(
+    httpRequest: HttpRequest,
+  ): Promise<HttpResponse> {
+    try {
+      const requiredParams: string[] = ["email"];
+      for (const field of requiredParams) {
+        if (!httpRequest.params[field]) {
+          return badRequest(new MissingParamError(field));
+        }
+      }
+
+      const { email } = httpRequest.params;
+
+      const user = await selectByEmailUserUseCase.selectByEmail({ email });
+
+      if (!user) {
+        return notFound();
+      }
+
+      const orders = await selectOrdersByUserIdUseCase.selectOrdersByUserId({
+        userId: user.user.id,
+      });
+
+      return {
+        statusCode: 200,
+        body: orders,
       };
     } catch (error) {
       return serverError();

@@ -2,6 +2,8 @@ import { type CreateOrderInput } from "../../usecases/createOrder/CreateOrderInp
 import { type UpdateOrderStatusInput } from "../../usecases/updateOrderStatus/UpdateOrderStatusInput";
 import { type IOrder } from "../models/Order";
 import { database } from "../../infrastructure/database/";
+import { type SelectOrdersByUserIdInput } from "../../usecases/selectOrdersByUserId/SelectOrdersByUserIdInput";
+import { type SelectOrdersByUserIdOutput } from "src/usecases/selectOrdersByUserId/SelectOrdersByUserIdOutput";
 
 export class OrderService {
   async create(order: CreateOrderInput): Promise<IOrder> {
@@ -34,6 +36,31 @@ export class OrderService {
           paymentStripeId: order.paymentStripeId,
         },
       });
+    } catch (error) {
+      throw new Error();
+    }
+  }
+
+  async selectOrdersByUserId(
+    user: SelectOrdersByUserIdInput,
+  ): Promise<SelectOrdersByUserIdOutput[]> {
+    try {
+      const orders = await database.order.findMany({
+        where: {
+          userId: user.userId,
+          statusStripeId: "complete",
+          event: {
+            dateStart: {
+              gte: new Date(),
+            },
+          },
+        },
+        include: {
+          event: true,
+        },
+      });
+
+      return orders;
     } catch (error) {
       throw new Error();
     }

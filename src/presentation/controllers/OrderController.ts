@@ -12,11 +12,17 @@ const userService = new UserService();
 const createOrderUseCase = new CreateOrderUseCase();
 const strikeService = new StrikeService();
 
-const userSchema = z.object({
+const oderSessionSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   eventId: z.string(),
   priceStripeId: z.string(),
+  quantity: z.number().or(z.string()).pipe(z.coerce.number()),
+});
+
+const orderFreeSchema = z.object({
+  email: z.string().email(),
+  eventId: z.string(),
   quantity: z.number().or(z.string()).pipe(z.coerce.number()),
 });
 
@@ -47,7 +53,7 @@ export class OrderController {
 
       const { email, name, priceStripeId, quantity, eventId } =
         httpRequest.body;
-      const isValid = userSchema.safeParse({
+      const isValid = oderSessionSchema.safeParse({
         email,
         name,
         priceStripeId,
@@ -85,7 +91,7 @@ export class OrderController {
         eventId: event.id,
       });
 
-      await createOrderUseCase.create({
+      const { order } = await createOrderUseCase.create({
         userId: user.id,
         eventId: event.id,
         tickets: quantity,
@@ -96,7 +102,61 @@ export class OrderController {
 
       return {
         statusCode: 201,
-        body: session,
+        body: { session, order },
+      };
+    } catch (error) {
+      return serverError();
+    }
+  }
+
+  static async createFreeOrder(
+    httpRequest: HttpRequest,
+  ): Promise<HttpResponse> {
+    try {
+      const requiredFields: string[] = ["email", "eventId", "quantity"];
+      for (const field of requiredFields) {
+        if (!httpRequest.body[field]) {
+          return badRequest(new MissingParamError(field));
+        }
+      }
+
+      const { email, quantity, eventId } = httpRequest.body;
+      const isValid = orderFreeSchema.safeParse({
+        email,
+        quantity,
+        eventId,
+      });
+      if (!isValid.success) {
+        const parsedMessage: passedMessageError[] = JSON.parse(
+          isValid.error.message,
+        );
+        return badRequest(new InvalidParamError(parsedMessage[0].validation));
+      }
+
+      const event = await eventService.selectByIdEvent({ id: eventId });
+
+      if (!event) {
+        return notFound();
+      }
+
+      const user = await userService.selectByEmailUser({ email });
+
+      if (!user) {
+        return notFound();
+      }
+
+      const { order } = await createOrderUseCase.create({
+        userId: user.id,
+        eventId: event.id,
+        tickets: +quantity,
+        sessionStripeId: null,
+        statusStripeId: "complete",
+        paymentStripeId: null,
+      });
+
+      return {
+        statusCode: 201,
+        body: order,
       };
     } catch (error) {
       return serverError();

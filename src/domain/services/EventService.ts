@@ -22,8 +22,17 @@ export class EventService {
 
       let result;
       if (event.price !== "Free") {
-        const arrayPrice = event.price.split(".");
-        const formattedPrice = arrayPrice[0] + arrayPrice[1];
+        let formattedPrice: string;
+
+        if (event.price.includes(".")) {
+          const arrayPrice = event.price.split(".");
+          arrayPrice[1].length === 1
+            ? (formattedPrice = arrayPrice[0] + (arrayPrice[1] + "0"))
+            : (formattedPrice = arrayPrice[0] + arrayPrice[1]);
+        } else {
+          formattedPrice = event.price + "00";
+        }
+
         result = await strikeService.createProduct({
           name: event.name,
           description: event.description,
