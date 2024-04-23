@@ -15,6 +15,10 @@ stripeRouter.post(
     console.log("API WEBHOOK:", process.env.STRIPE_SECRET_WEBHOOK);
     console.log("Request body: ", req.body);
 
+    if (!process.env.STRIPE_SECRET_WEBHOOK) {
+      throw new Error("Strike webhook secret not found");
+    }
+
     let event;
 
     if (sig) {
@@ -22,7 +26,7 @@ stripeRouter.post(
         event = stripe.webhooks.constructEvent(
           req.body,
           sig,
-          process.env.STRIPE_SECRET_WEBHOOK ?? "",
+          process.env.STRIPE_SECRET_WEBHOOK,
         );
       } catch (err: any) {
         console.error(err.message);
