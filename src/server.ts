@@ -31,6 +31,20 @@ const corsOptions = {
   credentials: true,
 };
 
+app.use(
+  (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ): void => {
+    if (req.originalUrl === "/api/v1/stripe/webhook") {
+      next();
+    } else {
+      express.json()(req, res, next);
+    }
+  },
+);
+
 app.use(cors(corsOptions));
 routes(app);
 

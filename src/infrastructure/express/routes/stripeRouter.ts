@@ -10,7 +10,9 @@ stripeRouter.post(
   express.raw({ type: "application/json" }),
   async (req: Request, res: Response) => {
     const sig: string | string[] | undefined = req.headers["stripe-signature"];
+    console.log("Original URL: " + req.originalUrl);
     console.log("header signature:", sig);
+    console.log("API WEBHOOK:", process.env.STRIPE_SECRET_WEBHOOK);
 
     let event;
 
@@ -27,6 +29,8 @@ stripeRouter.post(
         return;
       }
     }
+
+    console.log("✅ Success:", event?.id);
 
     switch (event?.type) {
       case "checkout.session.completed": {
