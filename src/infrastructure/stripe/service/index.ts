@@ -2,10 +2,7 @@ import Stripe from "stripe";
 import { stripeConfig } from "../../../config/stripe";
 import { UpdateOrderUseCase } from "src/usecases/updateOrderStatus/UpdateOrderStatusUseCase";
 
-export const stripe = new Stripe(stripeConfig.secretKey ?? "", {
-  apiVersion: "2024-04-10",
-  httpClient: Stripe.createFetchHttpClient(),
-});
+export const stripe = new Stripe(stripeConfig.secretKey ?? "");
 
 interface Price {
   currency: string;
