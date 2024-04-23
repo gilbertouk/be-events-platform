@@ -13,6 +13,7 @@ stripeRouter.post(
     console.log("Original URL: " + req.originalUrl);
     console.log("header signature:", sig);
     console.log("API WEBHOOK:", process.env.STRIPE_SECRET_WEBHOOK);
+    console.log("Request body: ", req.body);
 
     let event;
 
