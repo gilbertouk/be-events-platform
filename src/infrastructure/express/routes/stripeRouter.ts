@@ -10,6 +10,7 @@ stripeRouter.post(
   express.raw({ type: "application/json" }),
   async (req: Request, res: Response) => {
     const sig: string | string[] | undefined = req.headers["stripe-signature"];
+    console.log("header signature:", sig);
 
     let event;
 
@@ -21,7 +22,7 @@ stripeRouter.post(
           process.env.STRIPE_SECRET_WEBHOOK ?? "",
         );
       } catch (err: any) {
-        console.log(err);
+        console.error(err.message);
         res.status(400).send(`Webhook Error: ${err.message}`);
         return;
       }
