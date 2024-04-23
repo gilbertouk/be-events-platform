@@ -7,7 +7,7 @@ const strikeService = new StrikeService();
 
 stripeRouter.post(
   "/webhook",
-  express.raw({ type: "application/json" }),
+  express.raw({ type: "*/*" }),
   async (req: Request, res: Response) => {
     const sig: string | string[] | undefined = req.headers["stripe-signature"];
     console.log("Original URL: " + req.originalUrl);
