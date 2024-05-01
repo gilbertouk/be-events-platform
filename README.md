@@ -7,9 +7,13 @@ This RESTful API was designed to provide essential functionalities for a platfor
 
 ### Hosted version
 
-Link to the hosted version of the API below with available endpoints.
+Link to the hosted version of the API below.
 
-<a href='https://be-events-platfrom.onrender.com/api/v1' target="_blank">https://be-events-platfrom.onrender.com/api/v1</a>
+<a href='https://be-events-platform.onrender.com/api/v1' target="_blank">https://be-events-platform.onrender.com/api/v1</a>
+
+Link to the Front-End project below.
+
+<a href='https://github.com/gilbertouk/fe-events-platform' target="_blank">https://github.com/gilbertouk/fe-events-platform</a>
 
 ## How to initialize this project
 
