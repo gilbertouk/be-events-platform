@@ -10,10 +10,10 @@ stripeRouter.post(
   express.raw({ type: "application/json" }),
   async (req: Request, res: Response) => {
     const sig: string | string[] | undefined = req.headers["stripe-signature"];
-    console.log("Original URL: " + req.originalUrl);
-    console.log("header signature:", sig);
-    console.log("API WEBHOOK:", process.env.STRIPE_SECRET_WEBHOOK);
-    console.log("Request body: ", req.body);
+
+    if (!process.env.STRIPE_SECRET_WEBHOOK) {
+      throw new Error("Strike webhook secret not found");
+    }
 
     let event;
 
@@ -22,7 +22,7 @@ stripeRouter.post(
         event = stripe.webhooks.constructEvent(
           req.body,
           sig,
-          process.env.STRIPE_SECRET_WEBHOOK ?? "",
+          process.env.STRIPE_SECRET_WEBHOOK,
         );
       } catch (err: any) {
         console.error(err.message);
