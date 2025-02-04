@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/prefer-includes */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import "dotenv/config";
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import routes from "./infrastructure/express/routes";
+
+dotenv.config();
 
 const app = express();
 
