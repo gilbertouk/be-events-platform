@@ -1,9 +1,3 @@
-console.log({
-  private_key: process.env.PRIVATE_KEY
-    ? JSON.parse(process.env.PRIVATE_KEY)
-    : undefined,
-});
-
 export const authConfig = {
   type: "service_account",
   project_id: process.env.PROJECT_ID,
